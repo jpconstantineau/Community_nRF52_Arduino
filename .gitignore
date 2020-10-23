@@ -1,32 +1,22 @@
-# Prerequisites
-*.d
-
 # Compiled Object files
-*.slo
-*.lo
 *.o
 *.obj
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Visual Studio Code
+**/.vscode/
 
 # Executables
-*.exe
 *.out
 *.app
+
+*.pyc
+/tools/.idea/
+/tools/midi_tests/node_modules
+
+.DS_Store
+*.swp
+/Output
+
+# Ignore local overrides of platform.txt and boards.txt,
+/boards.local.txt
+/platform.local.txt
