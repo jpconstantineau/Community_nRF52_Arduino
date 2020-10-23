@@ -21,8 +21,6 @@
 #include "nrf.h"
 #include "usb.h"
 
-#include "flash/flash_qspi.h"
-
 const uint32_t g_ADigitalPinMap[] =
 {
   // P0
