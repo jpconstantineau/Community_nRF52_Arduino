@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arduino-platform: ['pca10056', 'bluemicro_52840']
+        arduino-platform: ['pca10056',feather_nrf52832']
 
     runs-on: ubuntu-latest
     

@@ -89,8 +89,8 @@ static const uint8_t AREF = PIN_AREF;
 /*
  * Serial interfaces
  */
-#define PIN_SERIAL_RX       (20)     //P0.20 same as bootloader
-#define PIN_SERIAL_TX       (17)     //P0.17 same as bootloader
+#define PIN_SERIAL1_RX       (20)     //P0.20 same as bootloader
+#define PIN_SERIAL1_TX       (17)     //P0.17 same as bootloader
 
 
 /*

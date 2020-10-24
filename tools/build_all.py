@@ -19,7 +19,7 @@ skip_count = 0
 build_format = '| {:20} | {:35} | {:18} | {:6} |'
 build_separator = '-' * 83
 
-default_boards = [ 'cluenrf52840', 'cplaynrf52840', 'feather52832', 'feather52840', 'feather52840sense', 'itsybitsy52840' ]
+default_boards =  ['pca10056','pca10059', 'bluemicro_52840','bluemacro_52840','feather_nrf52832','feather_nrf52840_express']
 build_boards = []
 
 # build all variants if input not existed
