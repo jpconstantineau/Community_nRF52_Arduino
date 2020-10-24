@@ -17,9 +17,9 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+menu.pnum=Board part number
 menu.softdevice=Bootloader
 menu.debug=Debug
-menu.pnum=Board part number
 
 # -------------------------------------------------------
 # 
@@ -35,6 +35,7 @@ nordic_semi.bootloader.tool=bootburn
 # Nordic nRF52840DK (PCA10056)
 # ----------------------------------
 nordic_semi.menu.pnum.pca10056=Nordic nRF52840DK (PCA10056)
+nordic_semi.menu.pnum.pca10056.node=NODE_pca10056
 
 # Upload
 nordic_semi.menu.pnum.pca10056.upload.tool=nrfutil
@@ -67,6 +68,7 @@ nordic_semi.menu.pnum.pca10056.softdevice.s140v6.build.sd_fwid=0x00B6
 # ----------------------------------
 
 nordic_semi.menu.pnum.pca10059.name=Nordic nRF52840 Dongle (PCA10059)
+nordic_semi.menu.pnum.pca10059.node=NODE_pca10059
 
 # Upload
 nordic_semi.menu.pnum.pca10059.upload.tool=nrfutil
@@ -80,9 +82,14 @@ nordic_semi.menu.pnum.pca10056.upload.maximum_data_size=237568
 nordic_semi.menu.pnum.pca10059.build.mcu=cortex-m4
 nordic_semi.menu.pnum.pca10059.build.f_cpu=64000000
 nordic_semi.menu.pnum.pca10059.build.board=NRF52840_PCA10059
-nordic_semi.menu.pnum.pca10059.build.core=nRF5
 nordic_semi.menu.pnum.pca10059.build.variant=pca10059
 nordic_semi.menu.pnum.pca10059.build.extra_flags=-DNRF52840_XXAA
+nordic_semi.menu.pnum.pca10059.build.usb_manufacturer="Nordic"
+nordic_semi.menu.pnum.pca10059.build.usb_product="nRF52840 Dongle"
+nordic_semi.menu.pnum.pca10059.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
+nordic_semi.menu.pnum.pca10059.build.ldscript=nrf52840_s140_v6.ld
+nordic_semi.menu.pnum.pca10059.build.vid=0x239A
+nordic_semi.menu.pnum.pca10059.build.pid=0x8029
 
 nordic_semi.menu.pnum.pca10059.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
 nordic_semi.menu.pnum.pca10059.softdevice.s140v6.build.sd_name=s140
