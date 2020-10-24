@@ -26,7 +26,7 @@ jobs:
         uses: christian-draeger/increment-semantic-version@1.0.2
         with:
           current-version: ${{ steps.lasttag.outputs.tag }}
-          version-fragment: 'bug'
+          version-fragment: 'feature'
 
       - name: About to release version
         run: echo ${{ steps.bump_version.outputs.next-version }}
