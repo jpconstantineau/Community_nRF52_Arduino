@@ -19,7 +19,7 @@
                 "checksum": "",
                 "size": "",
                 "help": {
-                "online": "https://forums.adafruit.com"
+                "online": "https://github.com/jpconstantineau/Community_nRF52_Arduino/wiki"
                 },
                 "boards": [
                 { "name": "Nordic PCA10056"},
