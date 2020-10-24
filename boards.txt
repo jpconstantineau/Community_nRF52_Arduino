@@ -56,11 +56,7 @@ adafruit_boards.menu.pnum.feather52832.build.usb_product="Feather nRF52832"
 adafruit_boards.menu.pnum.feather52832.build.extra_flags=-DNRF52832_XXAA -DNRF52
 adafruit_boards.menu.pnum.feather52832.build.ldscript=nrf52832_s132_v6.ld
 
-# SofDevice Menu
-adafruit_boards.menu.pnum.feather52832.softdevice.s132v6=0.3.2 SoftDevice s132 6.1.1
-adafruit_boards.menu.pnum.feather52832.softdevice.s132v6.build.sd_name=s132
-adafruit_boards.menu.pnum.feather52832.softdevice.s132v6.build.sd_version=6.1.1
-adafruit_boards.menu.pnum.feather52832.softdevice.s132v6.build.sd_fwid=0x00B7
+
 
 
 # ----------------------------------
@@ -101,11 +97,16 @@ adafruit_boards.menu.pnum.feather52840.build.ldscript=nrf52840_s140_v6.ld
 adafruit_boards.menu.pnum.feather52840.build.vid=0x239A
 adafruit_boards.menu.pnum.feather52840.build.pid=0x8029
 
+
 # SofDevice Menu
-adafruit_boards.menu.pnum.feather52840.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
-adafruit_boards.menu.pnum.feather52840.softdevice.s140v6.build.sd_name=s140
-adafruit_boards.menu.pnum.feather52840.softdevice.s140v6.build.sd_version=6.1.1
-adafruit_boards.menu.pnum.feather52840.softdevice.s140v6.build.sd_fwid=0x00B6
+adafruit_boards.menu.softdevice.s132v6=0.3.2 SoftDevice s132 6.1.1 for nRF52832
+adafruit_boards.menu.softdevice.s132v6.build.sd_name=s132
+adafruit_boards.menu.softdevice.s132v6.build.sd_version=6.1.1
+adafruit_boards.menu.softdevice.s132v6.build.sd_fwid=0x00B7
+adafruit_boards.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1 for nRF52840
+adafruit_boards.menu.softdevice.s140v6.build.sd_name=s140
+adafruit_boards.menu.softdevice.s140v6.build.sd_version=6.1.1
+adafruit_boards.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
 
 
