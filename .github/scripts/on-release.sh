@@ -28,9 +28,9 @@ RELEASE_BODY=`echo $EVENT_JSON | jq -r '.release.body'`
 OUTPUT_DIR="$GITHUB_WORKSPACE/build"
 PACKAGE_NAME="nrf52-$RELEASE_TAG"
 PACKAGE_JSON_MERGE="$GITHUB_WORKSPACE/.github/scripts/merge_packages.py"
-PACKAGE_JSON_TEMPLATE="$GITHUB_WORKSPACE/package/package_esp32_index.template.json"
-PACKAGE_JSON_DEV="package_esp32_dev_index.json"
-PACKAGE_JSON_REL="package_esp32_index.json"
+PACKAGE_JSON_TEMPLATE="$GITHUB_WORKSPACE/package/package_nrf52_index.template.json"
+PACKAGE_JSON_DEV="package_jpconstantineau_boards_dev_index.json"
+PACKAGE_JSON_REL="package_jpconstantineau_boards_index.json"
 
 echo "Event: $GITHUB_EVENT_NAME, Repo: $GITHUB_REPOSITORY, Path: $GITHUB_WORKSPACE, Ref: $GITHUB_REF"
 echo "Action: $action, Branch: $RELEASE_BRANCH, ID: $RELEASE_ID" 
@@ -178,6 +178,7 @@ cp -Rf "$GITHUB_WORKSPACE/cores"                   "$PKG_DIR/"
 cp -Rf "$GITHUB_WORKSPACE/libraries"               "$PKG_DIR/"
 cp -Rf "$GITHUB_WORKSPACE/variants"                "$PKG_DIR/"
 cp -Rf "$GITHUB_WORKSPACE/tools"                   "$PKG_DIR/"
+cp -Rf "$GITHUB_WORKSPACE/bootloader"                   "$PKG_DIR/"
 
 
 # Remove unnecessary files in the package folder
