@@ -131,10 +131,6 @@ feather52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 #
 # -------------------------------------------------------
 
-bluemicro_boards.name=BlueMicro Boards
-bluemicro_boards.build.core=nRF5
-bluemicro_boards.bootloader.tool=bootburn
-
 # ----------------------------------
 # BlueMicro V2.0c nRF52832
 # ----------------------------------

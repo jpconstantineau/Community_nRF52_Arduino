@@ -54,7 +54,7 @@ extern "C"
 #define LED_BLUE             PIN_LED2_B
 #define LED_GREEN            PIN_LED2_G
 
-#define LED_STATE_ON         0         // State when LED is litted
+#define LED_STATE_ON         1         // State when LED is litted
 
 /*
  * Analog pins
@@ -92,8 +92,6 @@ static const uint8_t AREF = PIN_AREF;
 #define PIN_SERIAL_RX       (20)     //P0.20 same as bootloader
 #define PIN_SERIAL_TX       (17)     //P0.17 same as bootloader
 
-//#define PIN_SERIAL2_RX      (8)
-//#define PIN_SERIAL2_TX      (6)
 
 /*
  * SPI Interfaces
