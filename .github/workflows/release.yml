@@ -11,6 +11,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@master
+
+    - name: Checkout submodules
+      shell: bash
+      run: |
+        auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+        git submodule sync --recursive
+        git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive   
+
     - uses: actions/setup-python@v1
       with:
         python-version: '3.x'
