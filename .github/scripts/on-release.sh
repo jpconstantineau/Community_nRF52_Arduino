@@ -107,23 +107,21 @@ function git_upload_to_pages(){
 }
 
 function git_safe_upload_to_pages(){
-    echo "in git_safe_upload_to_pages()"
     local path=$1
     local file="$2"
     local name=$(basename "$file")
     local size=`get_file_size "$file"`
     local upload_res=`git_upload_to_pages "$path" "$file"`
-    echo "$upload_res"
     if [ $? -ne 0 ]; then 
         >&2 echo "ERROR: Failed to upload '$name' ($?)"
         return 1
     fi
     up_size=`echo "$upload_res" | jq -r '.content.size'`
-    if [ $up_size -ne $size ]; then
-        >&2 echo "ERROR: Uploaded size does not match! $up_size != $size"
+ #   if [ $up_size -ne $size ]; then
+ #       >&2 echo "ERROR: Uploaded size does not match! $up_size != $size"
         #git_delete_asset
-        return 1
-    fi
+ #      return 1
+ #   fi
     echo "$upload_res" | jq -r '.content.download_url'
     return $?
 }
