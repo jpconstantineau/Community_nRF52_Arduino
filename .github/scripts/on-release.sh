@@ -181,10 +181,30 @@ cp -Rf "$GITHUB_WORKSPACE/tools"                   "$PKG_DIR/"
 cp -Rf "$GITHUB_WORKSPACE/bootloader"                   "$PKG_DIR/"
 
 
+
+
+
 # Remove unnecessary files in the package folder
 echo "Cleaning up folders ..."
 find "$PKG_DIR" -name '*.DS_Store' -exec rm -f {} \;
 find "$PKG_DIR" -name '*.git*' -type f -delete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Compress package folder
 echo "Creating ZIP ..."
