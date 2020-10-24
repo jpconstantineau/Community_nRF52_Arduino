@@ -12,6 +12,42 @@
         {
           "name": "Community Add on to Adafruit nRF52",
           "architecture": "nrf52",
+          "version": "0.0.7",
+          "category": "Contributed",
+          "url": "https://github.com/jpconstantineau/Community_nRF52_Arduino/releases/download/0.0.7/jpconstantineau-community-nrf52-0.0.7.zip",
+          "archiveFileName": "jpconstantineau-community-nrf52-0.0.7.zip",
+          "checksum": "SHA-256:f3f4b70aa519d391372897c8fc0500f9e5711f218dbe946fe5ff5eb0ffd51759",
+          "size": "3239995",
+          "help": {
+            "online": "https://github.com/jpconstantineau/Community_nRF52_Arduino/wiki"
+          },
+          "boards": [
+            {
+              "name": "Nordic PCA10056"
+            },
+            {
+              "name": "Nordic PCA10059"
+            },
+            {
+              "name": "BlueMicro nrf52840"
+            }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "adafruit",
+              "name": "arm-none-eabi-gcc",
+              "version": "9-2019q4"
+            },
+            {
+              "packager": "adafruit",
+              "name": "nrfjprog",
+              "version": "9.4.0"
+            }
+          ]
+        },
+        {
+          "name": "Community Add on to Adafruit nRF52",
+          "architecture": "nrf52",
           "version": "0.0.6",
           "category": "Contributed",
           "url": "https://github.com/jpconstantineau/Community_nRF52_Arduino/releases/download/0.0.6/jpconstantineau-community-nrf52-0.0.6.zip",
