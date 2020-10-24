@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - develop
-name: Automatic Release on Push/Merge into main
+name: Draft Patch Release on Push/Merge into develop
 
 jobs:
   build:
