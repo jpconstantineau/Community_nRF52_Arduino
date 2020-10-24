@@ -1,4 +1,4 @@
-name: nrf52 Arduino Release
+name: nrf52 Arduino Manual Release
 
 on:
   release:

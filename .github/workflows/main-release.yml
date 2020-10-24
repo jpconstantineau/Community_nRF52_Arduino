@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-name: Create Release on Push/Merge into main
+name: Automatic Release on Push/Merge into main
 
 jobs:
   build:
@@ -40,3 +40,18 @@ jobs:
           release_name: ${{ steps.bump_version.outputs.next-version }}
           draft: false
           prerelease: true
+
+      - name: Checkout submodules
+        shell: bash
+        run: |
+          auth_header="$(git config --local --get http.https://github.com/.extraheader)"
+          git submodule sync --recursive
+          git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive   
+
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.x'
+      - name: Build Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash ./.github/scripts/on-release.sh
