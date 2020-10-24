@@ -18,13 +18,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
 
+      - name: Bump release version
+        id: bump_version
+        uses: christian-draeger/increment-semantic-version@1.0.2
+        with:
+          current-version: ${{ steps.semantic_release_info.outputs.git_tag }}
+          version-fragment: 'bug'
+      - name: Do something with your bumped release version
+        run: echo ${{ steps.bump_version.outputs.next-version }}
+        # will print 2.12.0
+
       - name: Create GitHub Release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          tag_name: ${{ steps.semantic_release_info.outputs.git_tag }}
-          release_name: ${{ steps.semantic_release_info.outputs.git_tag }}
-          body: ${{ steps.semantic_release_info.outputs.notes }}
+          tag_name: ${{ steps.bump_version.outputs.next-version }}
+          release_name: ${{ steps.bump_version.outputs.next-version }}
           draft: false
           prerelease: true
