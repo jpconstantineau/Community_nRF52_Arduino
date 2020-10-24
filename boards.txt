@@ -120,7 +120,16 @@ bluemicro_boards.build.core=nRF5
 bluemicro_boards.bootloader.tool=bootburn
 
 # ----------------------------------
-# BlueMicro nRF52840
+# BlueMicro V2.0c nRF52832
+# ----------------------------------
+
+# ----------------------------------
+# BlueMicro V2.1 nRF52832
+# ----------------------------------
+
+
+# ----------------------------------
+# BlueMicro840 nRF52840
 # ----------------------------------
 bluemicro_boards.menu.pnum.bluemicro52840=BlueMicro840
 bluemicro_boards.menu.pnum.bluemicro52840.node=NODE_bluemicro840
@@ -157,6 +166,48 @@ bluemicro_boards.menu.pnum.bluemicro52840.softdevice.s140v6=0.3.2 SoftDevice s14
 bluemicro_boards.menu.pnum.bluemicro52840.softdevice.s140v6.build.sd_name=s140
 bluemicro_boards.menu.pnum.bluemicro52840.softdevice.s140v6.build.sd_version=6.1.1
 bluemicro_boards.menu.pnum.bluemicro52840.softdevice.s140v6.build.sd_fwid=0x00B6
+
+
+# ----------------------------------
+# BlueMacro nRF52840
+# ----------------------------------
+bluemicro_boards.menu.pnum.bluemacro52840=BlueMacro840
+bluemicro_boards.menu.pnum.bluemacro52840.node=NODE_bluemacro840
+
+# VID/PID for bootloader with/without UF2, Arduino
+bluemicro_boards.menu.pnum.bluemacro52840.vid.0=0x1D50
+bluemicro_boards.menu.pnum.bluemacro52840.pid.0=0x6160
+bluemicro_boards.menu.pnum.bluemacro52840.vid.1=0x1D50
+bluemicro_boards.menu.pnum.bluemacro52840.pid.1=0x6161 
+
+# Upload
+bluemicro_boards.menu.pnum.bluemacro52840.upload.tool=nrfutil
+bluemicro_boards.menu.pnum.bluemacro52840.upload.protocol=nrfutil
+bluemicro_boards.menu.pnum.bluemacro52840.upload.use_1200bps_touch=true
+bluemicro_boards.menu.pnum.bluemacro52840.upload.wait_for_upload_port=true
+bluemicro_boards.menu.pnum.bluemacro52840.upload.maximum_size=815104
+bluemicro_boards.menu.pnum.bluemacro52840.upload.maximum_data_size=237568
+
+# Build
+bluemicro_boards.menu.pnum.bluemacro52840.build.mcu=cortex-m4
+bluemicro_boards.menu.pnum.bluemacro52840.build.f_cpu=64000000
+bluemicro_boards.menu.pnum.bluemacro52840.build.board=BLUEMICRO_NRF52840
+bluemicro_boards.menu.pnum.bluemacro52840.build.core=nRF5
+bluemicro_boards.menu.pnum.bluemacro52840.build.variant=bluemicro_nrf52840
+bluemicro_boards.menu.pnum.bluemacro52840.build.usb_manufacturer="bluemicro.jpconstantineau.com"
+bluemicro_boards.menu.pnum.bluemacro52840.build.usb_product="BlueMicro"
+bluemicro_boards.menu.pnum.bluemacro52840.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
+bluemicro_boards.menu.pnum.bluemacro52840.build.ldscript=nrf52840_s140_v6.ld
+bluemicro_boards.menu.pnum.bluemacro52840.build.vid=0x1D50
+bluemicro_boards.menu.pnum.bluemacro52840.build.pid=0x6161
+
+# SofDevice Menu
+bluemicro_boards.menu.pnum.bluemacro52840.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
+bluemicro_boards.menu.pnum.bluemacro52840.softdevice.s140v6.build.sd_name=s140
+bluemicro_boards.menu.pnum.bluemacro52840.softdevice.s140v6.build.sd_version=6.1.1
+bluemicro_boards.menu.pnum.bluemacro52840.softdevice.s140v6.build.sd_fwid=0x00B6
+
+
 
 # Debug Menu
 bluemicro_boards.menu.debug.l0=Level 0 (Release)
