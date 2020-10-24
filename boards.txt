@@ -36,16 +36,12 @@ nordic_semi.bootloader.tool=bootburn
 # ----------------------------------
 nordic_semi.menu.pnum.pca10056=Nordic nRF52840DK (PCA10056)
 nordic_semi.menu.pnum.pca10056.node=NODE_pca10056
-
-# Upload
 nordic_semi.menu.pnum.pca10056.upload.tool=nrfutil
 nordic_semi.menu.pnum.pca10056.upload.protocol=nrfutil
 nordic_semi.menu.pnum.pca10056.upload.use_1200bps_touch=true
 nordic_semi.menu.pnum.pca10056.upload.wait_for_upload_port=true
 nordic_semi.menu.pnum.pca10056.upload.maximum_size=815104
 nordic_semi.menu.pnum.pca10056.upload.maximum_data_size=237568
-
-# Build
 nordic_semi.menu.pnum.pca10056.build.mcu=cortex-m4
 nordic_semi.menu.pnum.pca10056.build.f_cpu=64000000
 nordic_semi.menu.pnum.pca10056.build.board=NRF52840_PCA10056
@@ -61,18 +57,14 @@ nordic_semi.menu.pnum.pca10056.build.pid=0x8029
 # Nordic nRF52840 Dongle (PCA10059)
 # ----------------------------------
 
-nordic_semi.menu.pnum.pca10059.name=Nordic nRF52840 Dongle (PCA10059)
+nordic_semi.menu.pnum.pca10059=Nordic nRF52840 Dongle (PCA10059)
 nordic_semi.menu.pnum.pca10059.node=NODE_pca10059
-
-# Upload
 nordic_semi.menu.pnum.pca10059.upload.tool=nrfutil
 nordic_semi.menu.pnum.pca10059.upload.protocol=nrfutil
 nordic_semi.menu.pnum.pca10059.upload.use_1200bps_touch=true
 nordic_semi.menu.pnum.pca10059.upload.wait_for_upload_port=true
 nordic_semi.menu.pnum.pca10056.upload.maximum_size=815104
 nordic_semi.menu.pnum.pca10056.upload.maximum_data_size=237568
-
-# Build
 nordic_semi.menu.pnum.pca10059.build.mcu=cortex-m4
 nordic_semi.menu.pnum.pca10059.build.f_cpu=64000000
 nordic_semi.menu.pnum.pca10059.build.board=NRF52840_PCA10059
