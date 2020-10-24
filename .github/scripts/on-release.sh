@@ -65,11 +65,11 @@ function git_safe_upload_asset(){
         return 1
     fi
     up_size=`echo "$upload_res" | jq -r '.size'`
-    if [ $up_size -ne $size ]; then
-        >&2 echo "ERROR: Uploaded size does not match! $up_size != $size"
-        #git_delete_asset
-        return 1
-    fi
+   # if [ $up_size -ne $size ]; then
+   #     >&2 echo "ERROR: Uploaded size does not match! $up_size != $size"
+   #     #git_delete_asset
+   #     return 1
+   # fi
     echo "$upload_res" | jq -r '.browser_download_url'
     return $?
 }
