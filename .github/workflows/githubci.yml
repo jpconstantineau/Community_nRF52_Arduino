@@ -7,7 +7,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arduino-platform: ['pca10056',feather_nrf52832']
+        arduino-platform: ['feather52832', 'pca10056', 'feather52840']
 
     runs-on: ubuntu-latest
     
@@ -73,4 +73,4 @@ jobs:
         arduino-cli lib list
 
     - name: Build examples
-      run: echo python3 tools/build_all.py ${{ matrix.arduino-platform }}
+      run: python3 tools/build_all.py ${{ matrix.arduino-platform }}

@@ -19,7 +19,7 @@ skip_count = 0
 build_format = '| {:20} | {:35} | {:18} | {:6} |'
 build_separator = '-' * 83
 
-default_boards =  ['pca10056','pca10059', 'bluemicro_52840','bluemacro_52840','feather_nrf52832','feather_nrf52840_express']
+default_boards =  ['feather52832', 'pca10056', 'feather52840']
 build_boards = []
 
 # build all variants if input not existed
@@ -50,7 +50,7 @@ def build_examples(variant):
     print(build_format.format('Library', 'Example', '\033[39mResult\033[0m', 'Time'))
     print(build_separator)
     
-    fqbn = "adafruit:nrf52:{}:softdevice={},debug=l0".format(variant, 's140v6' if variant != 'feather52832' else 's132v6')
+    fqbn = "community_nrf52:nrf52:{}:softdevice={},debug=l0".format(variant, 's140v6' if variant != 'feather52832' else 's132v6')
 
     for sketch in all_examples:
         start_time = time.monotonic()
