@@ -57,12 +57,6 @@ nordic_semi.menu.pnum.pca10056.build.ldscript=nrf52840_s140_v6.ld
 nordic_semi.menu.pnum.pca10056.build.vid=0x239A
 nordic_semi.menu.pnum.pca10056.build.pid=0x8029
 
-# SofDevice Menu
-nordic_semi.menu.pnum.pca10056.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
-nordic_semi.menu.pnum.pca10056.softdevice.s140v6.build.sd_name=s140
-nordic_semi.menu.pnum.pca10056.softdevice.s140v6.build.sd_version=6.1.1
-nordic_semi.menu.pnum.pca10056.softdevice.s140v6.build.sd_fwid=0x00B6
-
 # ----------------------------------
 # Nordic nRF52840 Dongle (PCA10059)
 # ----------------------------------
@@ -91,11 +85,10 @@ nordic_semi.menu.pnum.pca10059.build.ldscript=nrf52840_s140_v6.ld
 nordic_semi.menu.pnum.pca10059.build.vid=0x239A
 nordic_semi.menu.pnum.pca10059.build.pid=0x8029
 
-nordic_semi.menu.pnum.pca10059.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
-nordic_semi.menu.pnum.pca10059.softdevice.s140v6.build.sd_name=s140
-nordic_semi.menu.pnum.pca10059.softdevice.s140v6.build.sd_version=6.1.1
-nordic_semi.menu.pnum.pca10059.softdevice.s140v6.build.sd_fwid=0x00B6
-
+nordic_semi.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
+nordic_semi.menu.softdevice.s140v6.build.sd_name=s140
+nordic_semi.menu.softdevice.s140v6.build.sd_version=6.1.1
+nordic_semi.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
 # Debug Menu
 nordic_semi.menu.debug.l0=Level 0 (Release)
