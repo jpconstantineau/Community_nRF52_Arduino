@@ -51,7 +51,8 @@ jobs:
         arduino-cli core install adafruit:nrf52 --additional-urls $BSP_URL_ADA
         arduino-cli core update-index --additional-urls $BSP_URL
         arduino-cli core install community_nrf52:nrf52 --additional-urls $BSP_URL
-        arduino-cli board list
+        arduino-cli core list
+        arduino-cli board listall
 
         # Replace release BSP with our code
         BSP_VERSION=`eval ls $HOME/$BSP_PATH`
