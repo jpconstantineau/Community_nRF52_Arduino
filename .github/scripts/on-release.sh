@@ -26,7 +26,7 @@ RELEASE_ID=`echo $EVENT_JSON | jq -r '.release.id'`
 RELEASE_BODY=`echo $EVENT_JSON | jq -r '.release.body'`
 
 OUTPUT_DIR="$GITHUB_WORKSPACE/build"
-PACKAGE_NAME="nrf52-$RELEASE_TAG"
+PACKAGE_NAME="jpconstantineau-community-nrf52-$RELEASE_TAG"
 PACKAGE_JSON_MERGE="$GITHUB_WORKSPACE/.github/scripts/merge_packages.py"
 PACKAGE_JSON_TEMPLATE="$GITHUB_WORKSPACE/package/package_nrf52_index.template.json"
 PACKAGE_JSON_DEV="package_jpconstantineau_boards_dev_index.json"
@@ -107,11 +107,13 @@ function git_upload_to_pages(){
 }
 
 function git_safe_upload_to_pages(){
+    echo "in git_safe_upload_to_pages()"
     local path=$1
     local file="$2"
     local name=$(basename "$file")
     local size=`get_file_size "$file"`
     local upload_res=`git_upload_to_pages "$path" "$file"`
+    echo "$upload_res"
     if [ $? -ne 0 ]; then 
         >&2 echo "ERROR: Failed to upload '$name' ($?)"
         return 1
