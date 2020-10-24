@@ -42,14 +42,18 @@ jobs:
       env:
         BSP_URL: https://github.com/jpconstantineau/Community_nRF52_Arduino/releases/latest/download/package_jpconstantineau_boards_index.json
         BSP_PATH: .arduino15/packages/community_nrf52/hardware/nrf52
+        BSP_URL_ADA: https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+        BSP_PATH_ADA: .arduino15/packages/adafruit/hardware/nrf52
       run: |
         arduino-cli config init
         arduino-cli core update-index
+        arduino-cli core update-index --additional-urls $BSP_URL_ADA
+        arduino-cli core install adafruit:nrf52 --additional-urls $BSP_URL_ADA
         arduino-cli core update-index --additional-urls $BSP_URL
         arduino-cli core install community_nrf52:nrf52 --additional-urls $BSP_URL
         arduino-cli board list
 
-        # Repalce release BSP with our code
+        # Replace release BSP with our code
         BSP_VERSION=`eval ls $HOME/$BSP_PATH`
         rm -r $HOME/$BSP_PATH/*
         ln -s $GITHUB_WORKSPACE $HOME/$BSP_PATH/$BSP_VERSION
