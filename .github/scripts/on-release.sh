@@ -327,21 +327,21 @@ if [ $arrLen > 3 ] && [ "${msgArray[0]:0:3}" == "tag" ]; then
 fi
 
 # Append Commit Messages
-if [ ! -z "$COMMITS_SINCE_RELEASE" ] && [ "$COMMITS_SINCE_RELEASE" != "null" ]; then
-    echo "Getting commits since $COMMITS_SINCE_RELEASE ..."
-    commitFile=$OUTPUT_DIR/commits.txt
-    git -C "$GITHUB_WORKSPACE" log --oneline $COMMITS_SINCE_RELEASE.. > "$OUTPUT_DIR/commits.txt"
-    releaseNotes+=$'\r\n##### Commits\r\n'
-    IFS=$'\n'
-    for next in `cat $commitFile`
-    do
-        IFS=' ' read -r commitId commitMsg <<< "$next"
-        commitLine="- [$commitId](https://github.com/$GITHUB_REPOSITORY/commit/$commitId) $commitMsg"
-        releaseNotes+="$commitLine"
-        releaseNotes+=$'\r\n'
-    done
-    rm -f $commitFile
-fi
+#if [ ! -z "$COMMITS_SINCE_RELEASE" ] && [ "$COMMITS_SINCE_RELEASE" != "null" ]; then
+#    echo "Getting commits since $COMMITS_SINCE_RELEASE ..."
+#    commitFile=$OUTPUT_DIR/commits.txt
+#    git -C "$GITHUB_WORKSPACE" log --oneline $COMMITS_SINCE_RELEASE.. > "$OUTPUT_DIR/commits.txt"
+#    releaseNotes+=$'\r\n##### Commits\r\n'
+#    IFS=$'\n'
+#    for next in `cat $commitFile`
+#    do
+#        IFS=' ' read -r commitId commitMsg <<< "$next"
+#        commitLine="- [$commitId](https://github.com/$GITHUB_REPOSITORY/commit/$commitId) $commitMsg"
+#        releaseNotes+="$commitLine"
+##        releaseNotes+=$'\r\n'
+#    done
+#    rm -f $commitFile
+#fi
 
 # Prepend the original release body
 if [ "${RELEASE_BODY: -1}" == $'\r' ]; then         
