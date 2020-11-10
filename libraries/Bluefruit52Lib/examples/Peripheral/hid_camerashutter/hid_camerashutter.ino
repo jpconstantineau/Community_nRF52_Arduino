@@ -14,24 +14,21 @@
 
 /*
  * This sketch uses the HID Consumer Key API to send the Volume Down
- * key when pinShutter is grounded. This will cause your mobile device
+ * key when PIN_SHUTTER is grounded. This will cause your mobile device
  * to capture a photo when you are in the camera app.
+ *
+ * For Feather nRF52840 PIN_SHUTTER is conveniently user switch.
  */
 #include <bluefruit.h>
 
 BLEDis bledis;
 BLEHidAdafruit blehid;
 
-// Use on-board button if available, else use A0 pin
-#ifdef PIN_BUTTON1
-  uint8_t pinShutter = PIN_BUTTON1;
-#else
-  uint8_t pinShutter = A0;
-#endif
+#define PIN_SHUTTER   7
 
 void setup()
 {
-  pinMode(pinShutter, INPUT_PULLUP);
+  pinMode(PIN_SHUTTER, INPUT_PULLUP);
 
   Serial.begin(115200);
   while ( !Serial ) delay(10);   // for nrf52840 with native usb
@@ -44,7 +41,7 @@ void setup()
   Serial.println("then open the camera application");
 
   Serial.println();
-  Serial.printf("Set pin %d to GND to capture a photo\n", pinShutter);
+  Serial.printf("Set pin %d to GND to capture a photo\n", PIN_SHUTTER);
   Serial.println();
 
   Bluefruit.begin();
@@ -107,14 +104,14 @@ void startAdv(void)
 void loop()
 {
   // Skip if shutter pin is not Ground
-  if ( digitalRead(pinShutter) == 1 ) return;
+  if ( digitalRead(PIN_SHUTTER) == 1 ) return;
 
   // Make sure we are connected and bonded/paired
   for (uint16_t conn_hdl=0; conn_hdl < BLE_MAX_CONNECTION; conn_hdl++)
   {
     BLEConnection* connection = Bluefruit.Connection(conn_hdl);
 
-    if ( connection && connection->connected() && connection->secured() )
+    if ( connection && connection->connected() && connection->paired() )
     {
       // Turn on red LED when we start sending data
       digitalWrite(LED_RED, 1);

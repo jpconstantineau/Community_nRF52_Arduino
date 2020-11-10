@@ -90,8 +90,7 @@ static void usb_device_task(void* param)
 {
   (void) param;
 
-  Serial.setStringDescriptor("TinyUSB Serial");
-  USBDevice.addInterface(Serial);
+  USBDevice.addInterface((Adafruit_USBD_Interface&) Serial);
   USBDevice.setID(USB_VID, USB_PID);
   USBDevice.begin();
 

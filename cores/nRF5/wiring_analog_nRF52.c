@@ -140,11 +140,55 @@ void analogOversampling( uint32_t ulOversampling )
 	}
 }
 
-static uint32_t analogRead_internal( uint32_t psel )
+uint32_t analogRead( uint32_t ulPin )
 {
+  uint32_t pin = SAADC_CH_PSELP_PSELP_NC;
   uint32_t saadcResolution;
   uint32_t resolution;
   volatile int16_t value = 0;
+
+  if (ulPin >= PINS_COUNT) {
+    return 0;
+  }
+
+  ulPin = g_ADigitalPinMap[ulPin];
+
+  switch ( ulPin ) {
+    case 2:
+      pin = SAADC_CH_PSELP_PSELP_AnalogInput0;
+      break;
+
+    case 3:
+      pin = SAADC_CH_PSELP_PSELP_AnalogInput1;
+      break;
+
+    case 4:
+      pin = SAADC_CH_PSELP_PSELP_AnalogInput2;
+      break;
+
+    case 5:
+      pin = SAADC_CH_PSELP_PSELP_AnalogInput3;
+      break;
+
+    case 28:
+      pin = SAADC_CH_PSELP_PSELP_AnalogInput4;
+      break;
+
+    case 29:
+      pin = SAADC_CH_PSELP_PSELP_AnalogInput5;
+      break;
+
+    case 30:
+      pin = SAADC_CH_PSELP_PSELP_AnalogInput6;
+      break;
+
+    case 31:
+      pin = SAADC_CH_PSELP_PSELP_AnalogInput7;
+      break;
+
+    default:
+      return 0;
+  }
 
   if (readResolution <= 8) {
     resolution = 8;
@@ -174,8 +218,8 @@ static uint32_t analogRead_internal( uint32_t psel )
                             | ((SAADC_CH_CONFIG_TACQ_3us      << SAADC_CH_CONFIG_TACQ_Pos)   & SAADC_CH_CONFIG_TACQ_Msk)
                             | ((SAADC_CH_CONFIG_MODE_SE       << SAADC_CH_CONFIG_MODE_Pos)   & SAADC_CH_CONFIG_MODE_Msk)
                             | ((saadcBurst                    << SAADC_CH_CONFIG_BURST_Pos)   & SAADC_CH_CONFIG_BURST_Msk);
-  NRF_SAADC->CH[0].PSELN = psel;
-  NRF_SAADC->CH[0].PSELP = psel;
+  NRF_SAADC->CH[0].PSELN = pin;
+  NRF_SAADC->CH[0].PSELP = pin;
 
 
   NRF_SAADC->RESULT.PTR = (uint32_t)&value;
@@ -203,62 +247,6 @@ static uint32_t analogRead_internal( uint32_t psel )
   NRF_SAADC->ENABLE = (SAADC_ENABLE_ENABLE_Disabled << SAADC_ENABLE_ENABLE_Pos);
 
   return mapResolution(value, resolution, readResolution);
-}
-
-
-uint32_t analogRead( uint32_t ulPin )
-{
-  uint32_t psel = SAADC_CH_PSELP_PSELP_NC;
-
-  if (ulPin >= PINS_COUNT) {
-    return 0;
-  }
-
-  ulPin = g_ADigitalPinMap[ulPin];
-
-  switch ( ulPin ) {
-    case 2:
-      psel = SAADC_CH_PSELP_PSELP_AnalogInput0;
-      break;
-
-    case 3:
-      psel = SAADC_CH_PSELP_PSELP_AnalogInput1;
-      break;
-
-    case 4:
-      psel = SAADC_CH_PSELP_PSELP_AnalogInput2;
-      break;
-
-    case 5:
-      psel = SAADC_CH_PSELP_PSELP_AnalogInput3;
-      break;
-
-    case 28:
-      psel = SAADC_CH_PSELP_PSELP_AnalogInput4;
-      break;
-
-    case 29:
-      psel = SAADC_CH_PSELP_PSELP_AnalogInput5;
-      break;
-
-    case 30:
-      psel = SAADC_CH_PSELP_PSELP_AnalogInput6;
-      break;
-
-    case 31:
-      psel = SAADC_CH_PSELP_PSELP_AnalogInput7;
-      break;
-
-    default:
-      return 0;
-  }
-
-  return analogRead_internal(psel);
-}
-
-uint32_t analogReadVDD( void )
-{
-  return analogRead_internal(SAADC_CH_PSELP_PSELP_VDD);
 }
 
 #ifdef __cplusplus
