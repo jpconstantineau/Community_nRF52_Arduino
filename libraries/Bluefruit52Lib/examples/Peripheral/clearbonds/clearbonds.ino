@@ -22,11 +22,7 @@
 void setup() 
 {
   Serial.begin(115200);
-
-#if CFG_DEBUG
-  // Blocking wait for connection when debug mode is enabled via IDE
-  while ( !Serial ) yield();
-#endif
+  while ( !Serial ) delay(10);   // for nrf52840 with native usb
 
   Serial.println("Bluefruit52 Clear Bonds Example");
   Serial.println("-------------------------------\n");
@@ -38,7 +34,7 @@ void setup()
   bond_print_list(BLE_GAP_ROLE_PERIPH);
   bond_print_list(BLE_GAP_ROLE_CENTRAL);
 
-  Bluefruit.Periph.clearBonds();
+  Bluefruit.clearBonds();
   Bluefruit.Central.clearBonds();
 
   Serial.println();

@@ -30,7 +30,7 @@ hid_mouse_report_t last_mse_report = { 0 };
 void setup()
 {
   Serial.begin(115200);
-//  while ( !Serial ) delay(10);   // for nrf52840 with native usb
+  while ( !Serial ) delay(10);   // for nrf52840 with native usb
 
   Serial.println("Bluefruit52 Central HID (Keyboard + Mouse) Example");
   Serial.println("--------------------------------------------------\n");
@@ -54,9 +54,6 @@ void setup()
   // Callbacks for Central
   Bluefruit.Central.setConnectCallback(connect_callback);
   Bluefruit.Central.setDisconnectCallback(disconnect_callback);
-
-  // Set connection secured callback, invoked when connection is encrypted
-  Bluefruit.Security.setSecuredCallback(connection_secured_callback);
 
   /* Start Central Scanning
    * - Enable auto scan if disconnected
@@ -91,8 +88,6 @@ void scan_callback(ble_gap_evt_adv_report_t* report)
  */
 void connect_callback(uint16_t conn_handle)
 {
-  BLEConnection* conn = Bluefruit.Connection(conn_handle);
-
   Serial.println("Connected");
 
   Serial.print("Discovering HID  Service ... ");
@@ -102,31 +97,11 @@ void connect_callback(uint16_t conn_handle)
     Serial.println("Found it");
 
     // HID device mostly require pairing/bonding
-    conn->requestPairing();
-  }else
-  {
-    Serial.println("Found NONE");
-    
-    // disconnect since we couldn't find blehid service
-    conn->disconnect();
-  }
-}
-
-void connection_secured_callback(uint16_t conn_handle)
-{
-  BLEConnection* conn = Bluefruit.Connection(conn_handle);
-
-  if ( !conn->secured() )
-  {
-    // It is possible that connection is still not secured by this time.
-    // This happens (central only) when we try to encrypt connection using stored bond keys
-    // but peer reject it (probably it remove its stored key).
-    // Therefore we will request an pairing again --> callback again when encrypted
-    conn->requestPairing();
-  }
-  else
-  {
-    Serial.println("Secured");
+    if ( !Bluefruit.requestPairing(conn_handle) )
+    {
+      Serial.print("Failed to paired");
+      return;
+    }
 
     // https://www.bluetooth.com/specifications/gatt/viewer?attributeXmlFile=org.bluetooth.characteristic.hid_information.xml
     uint8_t hidInfo[4];
@@ -145,9 +120,15 @@ void connection_secured_callback(uint16_t conn_handle)
 
     // Enable Mouse report notification if present on prph
     if ( hid.mousePresent() ) hid.enableMouse();
-
+    
     Serial.println("Ready to receive from peripheral");
-  }
+  }else
+  {
+    Serial.println("Found NONE");
+    
+    // disconnect since we couldn't find blehid service
+    Bluefruit.disconnect(conn_handle);
+  }  
 }
 
 /**

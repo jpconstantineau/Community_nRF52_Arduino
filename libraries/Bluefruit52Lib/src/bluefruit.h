@@ -55,7 +55,6 @@
 #include "BLEDiscovery.h"
 #include "BLEConnection.h"
 #include "BLEGatt.h"
-#include "BLESecurity.h"
 
 // Services
 #include "services/BLEDis.h"
@@ -101,22 +100,20 @@ extern "C"
 class AdafruitBluefruit
 {
   public:
-    typedef void (*event_cb_t) (ble_evt_t* evt);
-    typedef void (*rssi_cb_t) (uint16_t conn_hdl, int8_t rssi);
+    typedef void (*rssi_callback_t) (uint16_t conn_hdl, int8_t rssi);
 
-    AdafruitBluefruit(void);
+    AdafruitBluefruit(void); // Constructor
 
     /*------------------------------------------------------------------*/
     /* Lower Level Classes (Bluefruit.Advertising.*, etc.)
      *------------------------------------------------------------------*/
-    BLEPeriph          Periph;
-    BLECentral         Central;
-    BLESecurity        Security;
     BLEGatt            Gatt;
 
     BLEAdvertising     Advertising;
     BLEAdvertisingData ScanResponse;
     BLEScanner         Scanner;
+    BLEPeriph          Periph;
+    BLECentral         Central;
     BLEDiscovery       Discovery;
 
     /*------------------------------------------------------------------*/
@@ -154,8 +151,15 @@ class AdafruitBluefruit
     bool     setAppearance      (uint16_t appear);
     uint16_t getAppearance      (void);
 
+    ble_gap_sec_params_t getSecureParam(void)
+    {
+      return _sec_param;
+    }
+
     void     autoConnLed        (bool enabled);
     void     setConnLedInterval (uint32_t ms);
+
+    void     clearBonds        (void);
 
     /*------------------------------------------------------------------*/
     /* GAP, Connections and Bonding
@@ -164,9 +168,11 @@ class AdafruitBluefruit
     bool     connected         (uint16_t conn_hdl);
 
     uint16_t connHandle        (void);
+    bool     connPaired        (uint16_t conn_hdl);
 
     // Alias to BLEConnection API()
     bool     disconnect        (uint16_t conn_hdl);
+    bool     requestPairing    (uint16_t conn_hdl);
 
     uint16_t getMaxMtu(uint8_t role);
 
@@ -186,8 +192,10 @@ class AdafruitBluefruit
     /*------------------------------------------------------------------*/
     /* Callbacks
      *------------------------------------------------------------------*/
-    void setRssiCallback(rssi_cb_t fp);
-    void setEventCallback(event_cb_t fp);
+    void setRssiCallback(rssi_callback_t fp);
+    void setEventCallback( void (*fp) (ble_evt_t*) );
+
+    COMMENT_OUT ( bool setPIN(const char* pin); )
 
     /*------------------------------------------------------------------*/
     /* INTERNAL USAGE ONLY
@@ -232,7 +240,6 @@ class AdafruitBluefruit
     SemaphoreHandle_t* _mprot_event_sem;
 #endif
 
-    // Auto LED Blinky
     TimerHandle_t _led_blink_th;
     bool _led_conn;
 
@@ -240,9 +247,13 @@ class AdafruitBluefruit
 
     BLEConnection* _connection[BLE_MAX_CONNECTION];
 
-    //------------- Callbacks -------------//
-    rssi_cb_t _rssi_cb;
-    event_cb_t _event_cb;
+    rssi_callback_t _rssi_cb;
+    void (*_event_cb) (ble_evt_t*);
+
+COMMENT_OUT(
+    uint8_t _auth_type;
+    char _pin[BLE_GAP_PASSKEY_LEN];
+)
 
     /*------------------------------------------------------------------*/
     /* INTERNAL USAGE ONLY

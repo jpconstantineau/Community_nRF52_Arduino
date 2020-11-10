@@ -194,7 +194,8 @@ void vPortSuppressTicksAndSleep( TickType_t xExpectedIdleTime )
             (void) sd_softdevice_is_enabled(&sd_en);
             if (sd_en) // (softdevice_handler_is_enabled())
             {
-                (void) sd_app_evt_wait();
+                uint32_t err_code = sd_app_evt_wait();
+                //APP_ERROR_CHECK(err_code);
             }
             else
 #endif

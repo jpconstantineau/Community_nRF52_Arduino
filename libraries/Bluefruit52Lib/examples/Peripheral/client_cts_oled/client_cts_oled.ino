@@ -54,12 +54,9 @@ void setup()
 
   Bluefruit.begin();
   Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values
-
+  Bluefruit.setName("Bluefruit52");
   Bluefruit.Periph.setConnectCallback(connect_callback);
   Bluefruit.Periph.setDisconnectCallback(disconnect_callback);
-
-  // Set connection secured callback, invoked when connection is encrypted
-  Bluefruit.Security.setSecuredCallback(connection_secured_callback);
 
   // Configure CTS client
   bleCTime.begin();
@@ -106,15 +103,11 @@ void startAdv(void)
 
 void loop()
 {
-  // This example only support 1 connection
-  uint16_t const conn_handle = 0;
-  BLEConnection* conn = Bluefruit.Connection(conn_handle);
-
-  // connection exist, connected, and secured
-  if ( !(conn && conn->connected() && conn->secured()) ) return;
-
   // Skip if service is not yet discovered
   if ( !bleCTime.discovered() ) return;
+
+  // Skip if service connection is not paired/secured
+  if ( !Bluefruit.connPaired( bleCTime.connHandle() ) ) return;
 
   // Get Time from iOS once per second
   // Note it is not advised to update this quickly
@@ -130,8 +123,6 @@ void loop()
 
 void connect_callback(uint16_t conn_handle)
 {
-  BLEConnection* conn = Bluefruit.Connection(conn_handle);
-
   oled.clearDisplay();
   oled.setCursor(0, 0);
   oled.println("Connected.");
@@ -142,42 +133,24 @@ void connect_callback(uint16_t conn_handle)
   {
     oled.println("OK");
 
-    // Current Time Service requires pairing to work
-    // request Pairing if not bonded
+    // ANCS requires pairing to work
     oled.print("Paring      ... ");
+    
     oled.display();
 
-    conn->requestPairing();
-  }
-}
-
-void connection_secured_callback(uint16_t conn_handle)
-{
-  BLEConnection* conn = Bluefruit.Connection(conn_handle);
-
-  if ( !conn->secured() )
-  {
-    // It is possible that connection is still not secured by this time.
-    // This happens (central only) when we try to encrypt connection using stored bond keys
-    // but peer reject it (probably it remove its stored key).
-    // Therefore we will request an pairing again --> callback again when encrypted
-    conn->requestPairing();
-  }
-  else
-  {
-    oled.println("Secured");
-
-    if ( bleCTime.discovered() )
+    if ( Bluefruit.requestPairing(conn_handle) )
     {
+      oled.println("OK");
+
       bleCTime.enableAdjust();
 
       oled.println("Receiving Time...");
-      oled.display();
-
       bleCTime.getCurrentTime();
       bleCTime.getLocalTimeInfo();
     }
   }
+
+  oled.display();
 }
 
 void printTime(void)

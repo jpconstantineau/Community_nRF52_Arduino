@@ -23,8 +23,7 @@
 BLEClientDis  bleClientDis;
 BLEAncs       bleancs;
 
-#define BUFSIZE   128
-char buffer[BUFSIZE];
+char buffer[128];
 
 // Check BLEAncs.h for AncsNotification_t
 const char* EVENT_STR[] = { "Added", "Modified", "Removed" };
@@ -38,7 +37,7 @@ const char* CAT_STR  [] =
 void setup()
 {
   Serial.begin(115200);
-//  while ( !Serial ) delay(10);   // for nrf52840 with native usb
+  while ( !Serial ) delay(10);   // for nrf52840 with native usb
 
   Serial.println("Bluefruit52 BLE ANCS Example");
   Serial.println("----------------------------\n");
@@ -53,11 +52,9 @@ void setup()
 
   Bluefruit.begin();
   Bluefruit.setTxPower(4);    // Check bluefruit.h for supported values
+  Bluefruit.setName("Bluefruit52");
   Bluefruit.Periph.setConnectCallback(connect_callback);
   Bluefruit.Periph.setDisconnectCallback(disconnect_callback);
-
-  // Set connection secured callback, invoked when connection is encrypted
-  Bluefruit.Security.setSecuredCallback(connection_secured_callback);
 
   // Configure DIS client
   bleClientDis.begin();
@@ -111,8 +108,6 @@ void loop()
 
 void connect_callback(uint16_t conn_handle)
 {
-  BLEConnection* conn = Bluefruit.Connection(conn_handle);
-
   Serial.println("Connected");
   
   Serial.print("Discovering DIS ... ");
@@ -121,16 +116,16 @@ void connect_callback(uint16_t conn_handle)
     Serial.println("Discovered");
     
     // Read and print Manufacturer string
-    memset(buffer, 0, BUFSIZE);
-    if ( bleClientDis.getManufacturer(buffer, BUFSIZE) )
+    memset(buffer, 0, sizeof(buffer));
+    if ( bleClientDis.getManufacturer(buffer, sizeof(buffer)) )
     {
       Serial.print("Manufacturer: ");
       Serial.println(buffer);
     }
 
     // Read and print Model Number string
-    memset(buffer, 0, BUFSIZE);
-    if ( bleClientDis.getModel(buffer, BUFSIZE) )
+    memset(buffer, 0, sizeof(buffer));
+    if ( bleClientDis.getModel(buffer, sizeof(buffer)) )
     {
       Serial.print("Model: ");
       Serial.println(buffer);
@@ -146,77 +141,54 @@ void connect_callback(uint16_t conn_handle)
 
     // ANCS requires pairing to work, it makes sense to request security here as well
     Serial.print("Attempting to PAIR with the iOS device, please press PAIR on your phone ... ");
-    conn->requestPairing();
-  }
-}
-
-void connection_secured_callback(uint16_t conn_handle)
-{
-  BLEConnection* conn = Bluefruit.Connection(conn_handle);
-
-  if ( !conn->secured() )
-  {
-    // It is possible that connection is still not secured by this time.
-    // This happens (central only) when we try to encrypt connection using stored bond keys
-    // but peer reject it (probably it remove its stored key).
-    // Therefore we will request an pairing again --> callback again when encrypted
-    conn->requestPairing();
-  }
-  else
-  {
-    Serial.println("Secured");
-
-    if ( bleancs.discovered() )
+    if ( Bluefruit.requestPairing(conn_handle) )
     {
+      Serial.println("Done");
       Serial.println("Enabling notifications");
       Serial.println();
       bleancs.enableNotification();
+
+      Serial.println("| Event    | Category (count)     | Title          | Message         | App ID               | App Name        |");
+      Serial.println("---------------------------------------------------------------------------------------------------------------");
     }
   }
 }
 
 void ancs_notification_callback(AncsNotification_t* notif)
 {
-  uint32_t const uid = notif->uid;
+  int n;
+  Serial.printf("| %-8s | ", EVENT_STR[notif->eventID]);
 
-  // Application ID & Name
-  char appID[128] = { 0 };
-  bleancs.getAppID(uid, appID, sizeof(appID));
-
-  memset(buffer, 0, BUFSIZE);
-  bleancs.getAppAttribute(appID, ANCS_APP_ATTR_DISPLAY_NAME, buffer, BUFSIZE);
-
-  Serial.printf("%-15s (%s)\n", buffer, appID);
+  // Print Category with padding
+  n = Serial.printf("%s (%d)", CAT_STR[notif->categoryID], notif->categoryCount);
+  for (int i=n; i<20; i++) Serial.print(' ');
+  Serial.print(" | ");
 
   // Get notification Title
-  // iDevice often include Unicode "Bidirection Text Control" in the Title.
-  // Mostly are U+202D as beginning and U+202C as ending. Let's remove them
-  memset(buffer, 0, BUFSIZE);
-  if ( bleancs.getTitle(uid, buffer, BUFSIZE) )
-  {
-    char u202D[3] = { 0xE2, 0x80, 0xAD }; // U+202D in UTF-8
-    char u202C[3] = { 0xE2, 0x80, 0xAC }; // U+202C in UTF-8
-
-    int len = strlen(buffer);
-
-    if ( 0 == memcmp(&buffer[len-3], u202C, 3) )
-    {
-      len -= 3;
-      buffer[len] = 0; // chop ending U+202C
-    }
-
-    if ( 0 == memcmp(buffer, u202D, 3) )
-    {
-      memmove(buffer, buffer+3, len-2); // move null-terminator as well
-    }
-  }
+  // iDevice often includes Unicode "Bidirection Text Control" in the Title.
+  // Most strings have U+202D at the beginning and U+202C at the end. You may
+  // want to remove them.
+  // U+202D is E2-80-AD, U+202C is E2-80-AC in UTF-8
+  memset(buffer, 0, sizeof(buffer));
+  bleancs.getAttribute(notif->uid, ANCS_ATTR_TITLE, buffer, sizeof(buffer));
+  Serial.printf("%-14s | ", buffer);
   
-  Serial.printf("%-15s %s\n", buffer, EVENT_STR[notif->eventID]);
-
   // Get notification Message
-  memset(buffer, 0, BUFSIZE);
-  bleancs.getMessage(uid, buffer, BUFSIZE);
-  Serial.printf("  %s\n", buffer);
+  memset(buffer, 0, sizeof(buffer));
+  bleancs.getAttribute(notif->uid, ANCS_ATTR_MESSAGE, buffer, sizeof(buffer));
+  Serial.printf("%-15s | ", buffer);
+  
+  // Get App ID and store in the app_id variable
+  char app_id[64] = { 0 };
+  memset(buffer, 0, sizeof(buffer));
+  bleancs.getAttribute(notif->uid, ANCS_ATTR_APP_IDENTIFIER, buffer, sizeof(buffer));
+  strcpy(app_id, buffer);
+  Serial.printf("%-20s | ", app_id);
+
+  // Get Application Name
+  memset(buffer, 0, sizeof(buffer));
+  bleancs.getAppAttribute(app_id, ANCS_APP_ATTR_DISPLAY_NAME, buffer, sizeof(buffer));
+  Serial.printf("%-15s | ", buffer);
 
   Serial.println();
 
