@@ -311,10 +311,10 @@ pca10056.menu.debug.l3=Level 3 (Segger SystemView)
 pca10056.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
 pca10056.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 
+
 # ----------------------------------
 # Nordic nRF52840 Dongle (PCA10059)
 # ----------------------------------
-
 pca10059.name=Nordic nRF52840 Dongle (PCA10059)
 pca10059.bootloader.tool=bootburn
 
@@ -333,7 +333,7 @@ pca10059.build.board=NRF52840_PCA10059
 pca10059.build.core=nRF5
 pca10059.build.variant=pca10059
 pca10059.build.usb_manufacturer="Nordic"
-pca10059.build.usb_product="nRF52840 Dongle"
+pca10059.build.usb_product="nRF52840 DK"
 pca10059.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
 pca10059.build.ldscript=nrf52840_s140_v6.ld
 pca10059.build.vid=0x239A
@@ -355,6 +355,7 @@ pca10059.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
 pca10059.menu.debug.l3=Level 3 (Segger SystemView)
 pca10059.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
 pca10059.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
+
 
 
 =======
