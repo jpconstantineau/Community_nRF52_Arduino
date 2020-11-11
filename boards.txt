@@ -261,7 +261,54 @@ bluemacro_nrf52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 #
 # -------------------------------------------------------
 
+# ----------------------------------
+# Nice Nano - 
+# see https://docs.nicekeyboards.com/#/nice!nano/pinout_schematic
+# ----------------------------------
 
+nice_nano.name=Nice Keyboard's nice!nano
+nice_nano.bootloader.tool=bootburn
+
+# Upload
+nice_nano.upload.tool=nrfutil
+nice_nano.upload.protocol=nrfutil
+nice_nano.upload.use_1200bps_touch=true
+nice_nano.upload.wait_for_upload_port=true
+nice_nano.upload.maximum_size=815104
+nice_nano.upload.maximum_data_size=237568
+
+# Build
+nice_nano.build.mcu=cortex-m4
+nice_nano.build.f_cpu=64000000
+nice_nano.build.board=NICE_NANO
+nice_nano.build.core=nRF5
+nice_nano.build.variant=nice_nano
+nice_nano.build.usb_manufacturer="Nice Keyboards"
+nice_nano.build.usb_product="nice!nano"
+nice_nano.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
+nice_nano.build.ldscript=nrf52840_s140_v6.ld
+nice_nano.build.vid=0x239A
+nice_nano.build.pid=0x00B3
+
+# SofDevice Menu
+nice_nano.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
+nice_nano.menu.softdevice.s140v6.build.sd_name=s140
+nice_nano.menu.softdevice.s140v6.build.bl_version=0.3.2
+nice_nano.menu.softdevice.s140v6.build.sd_version=6.1.1
+nice_nano.menu.softdevice.s140v6.build.sd_fwid=0x00B6
+
+# Debug Menu
+nice_nano.menu.debug.l0=Level 0 (Release)
+nice_nano.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+nice_nano.menu.debug.l1=Level 1 (Error Message)
+nice_nano.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+nice_nano.menu.debug.l2=Level 2 (Full Debug)
+nice_nano.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+nice_nano.menu.debug.l3=Level 3 (Segger SystemView)
+nice_nano.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+nice_nano.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
+
+=======
 
 # -------------------------------------------------------
 # 
