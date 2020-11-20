@@ -33,3 +33,22 @@ nrfutil_boot.program.burn_pattern={program.cmd} --verbose dfu serial -pkg "{boot
 nrfutil_boot.program.params.quiet=
 nrfutil_boot.program.params.verbose=
 nrfutil_boot.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as programmer
+
+
+#**********************************************
+# Black Magic Probe
+#**********************************************
+bmp_boot.name=Black Magic Probe for nRF52 (Testing)
+bmp_boot.program.tool=bootburn
+bmp_boot.program.cmd=arm-none-eabi-gdb
+bmp_boot.program.cmd.windows={runtime.tools.arm-none-eabi-gcc.path}/bin/arm-none-eabi-gdb.exe
+bmp_boot.program.cmd.macosx={runtime.tools.arm-none-eabi-gcc.path}/bin/arm-none-eabi-gdb
+
+# Burn bootloader pattern
+bmp_boot.program.burn_pattern={program.cmd}  "{bootloader.file}.hex" --batch -ex "target extended-remote \\.\{serial.port}" -ex "mon tpwr enable" -ex "mon swdp_scan" -ex "att 1"  -ex "load  " -ex "compare-sections" -ex "mon hard_srst" -ex "detach"
+
+
+# Remind user to select Jlink when used to upload sketch
+bmp_boot.program.params.quiet=
+bmp_boot.program.params.verbose=
+bmp_boot.program.pattern=echo Please select <Black Magic Probe for Bluefruit nRF52> as programmer

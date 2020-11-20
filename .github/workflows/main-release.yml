@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-name: Automatic Release on Push/Merge into main
+name: Draft Minor Release on Push/Merge into main
 
 jobs:
   build:

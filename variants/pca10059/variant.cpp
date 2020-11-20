@@ -19,7 +19,6 @@
 #include "wiring_constants.h"
 #include "wiring_digital.h"
 #include "nrf.h"
-#include "usb.h"
 
 const uint32_t g_ADigitalPinMap[] =
 {
@@ -31,25 +30,40 @@ const uint32_t g_ADigitalPinMap[] =
 
   // P1
   32, 33, 34, 35, 36, 37, 38, 39,
-  40, 41, 42, 43, 44, 45, 46, 47,
-  48, 49, 50, 51, 52, 53, 54, 55,
-  56, 57, 58, 59, 60, 61, 62, 63
+  40, 41, 42, 43, 44, 45, 46, 47
 };
-
 
 void initVariant()
 {
-  // LED1 & LED2
+  // Set REGOUT0 to 3V mode
+  // https://devzone.nordicsemi.com/nordic/short-range-guides/b/getting-started/posts/nrf52840-dongle-programming-tutorial
+  if ((NRF_UICR->REGOUT0 & UICR_REGOUT0_VOUT_Msk) ==
+      (UICR_REGOUT0_VOUT_DEFAULT << UICR_REGOUT0_VOUT_Pos))
+  {
+      NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Wen;
+      while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+
+      NRF_UICR->REGOUT0 = (NRF_UICR->REGOUT0 & ~((uint32_t)UICR_REGOUT0_VOUT_Msk)) |
+                          (UICR_REGOUT0_VOUT_3V0 << UICR_REGOUT0_VOUT_Pos);
+
+      NRF_NVMC->CONFIG = NVMC_CONFIG_WEN_Ren;
+      while (NRF_NVMC->READY == NVMC_READY_READY_Busy){}
+
+      // System reset is needed to update UICR registers.
+      NVIC_SystemReset();
+  }
+
+  // init all 4 onboard LEDs
   pinMode(PIN_LED1, OUTPUT);
-  ledOn(PIN_LED1);
+  ledOff(PIN_LED1);
 
   pinMode(PIN_LED2_R, OUTPUT);
-  ledOn(PIN_LED2_R);
+  ledOff(PIN_LED2_R);
 
   pinMode(PIN_LED2_G, OUTPUT);
-  ledOn(PIN_LED2_G);
+  ledOff(PIN_LED2_G);
 
   pinMode(PIN_LED2_B, OUTPUT);
-  ledOn(PIN_LED2_B);
-
+  ledOff(PIN_LED2_B);
 }
+
