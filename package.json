@@ -1,0 +1,7 @@
+{
+    "description": "Community Add-on to the Adafruit_nRF52_Arduino Board Support Package",
+    "name": "framework-arduinocommunityadafruitnrf52",
+    "system": "*",
+    "url": "https://github.com/jpconstantineau/Community_nRF52_Arduino",
+    "version": "0.1.2"
+  }
