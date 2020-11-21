@@ -411,10 +411,5 @@ pca10059.menu.debug.l3=Level 3 (Segger SystemView)
 pca10059.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
 pca10059.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> develop
 =======
 
