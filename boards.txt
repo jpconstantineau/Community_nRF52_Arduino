@@ -55,6 +55,7 @@ feather52832.build.ldscript=nrf52832_s132_v6.ld
 # SofDevice Menu
 feather52832.menu.softdevice.s132v6=0.3.2 SoftDevice s132 6.1.1
 feather52832.menu.softdevice.s132v6.build.sd_name=s132
+feather52832.menu.softdevice.s140v6.build.bl_version=0.3.2
 feather52832.menu.softdevice.s132v6.build.sd_version=6.1.1
 feather52832.menu.softdevice.s132v6.build.sd_fwid=0x00B7
 
@@ -109,6 +110,7 @@ feather52840.build.pid=0x8029
 # SofDevice Menu
 feather52840.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
 feather52840.menu.softdevice.s140v6.build.sd_name=s140
+feather52840.menu.softdevice.s140v6.build.bl_version=0.3.2
 feather52840.menu.softdevice.s140v6.build.sd_version=6.1.1
 feather52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
@@ -144,104 +146,105 @@ feather52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 # BlueMicro840 nRF52840
 # ----------------------------------
 
-bluemicro52840.name=BlueMicro nRF52840
+bluemicro_nrf52840.name=BlueMicro nRF52840
 
 # VID/PID for bootloader with/without UF2, Arduino
-bluemicro52840.vid.0=0x1D50
-bluemicro52840.pid.0=0x6160
-bluemicro52840.vid.1=0x1D50
-bluemicro52840.pid.1=0x6161 
+bluemicro_nrf52840.vid.0=0x1D50
+bluemicro_nrf52840.pid.0=0x6160
+bluemicro_nrf52840.vid.1=0x1D50
+bluemicro_nrf52840.pid.1=0x6161 
 
 # Upload
-bluemicro52840.bootloader.tool=bootburn
-bluemicro52840.upload.tool=nrfutil
-bluemicro52840.upload.protocol=nrfutil
-bluemicro52840.upload.use_1200bps_touch=true
-bluemicro52840.upload.wait_for_upload_port=true
-bluemicro52840.upload.maximum_size=815104
-bluemicro52840.upload.maximum_data_size=237568
+bluemicro_nrf52840.bootloader.tool=bootburn
+bluemicro_nrf52840.upload.tool=nrfutil
+bluemicro_nrf52840.upload.protocol=nrfutil
+bluemicro_nrf52840.upload.use_1200bps_touch=true
+bluemicro_nrf52840.upload.wait_for_upload_port=true
+bluemicro_nrf52840.upload.maximum_size=815104
+bluemicro_nrf52840.upload.maximum_data_size=237568
 
 # Build
-bluemicro52840.build.mcu=cortex-m4
-bluemicro52840.build.f_cpu=64000000
-bluemicro52840.build.board=BLUEMICRO_NRF52840
-bluemicro52840.build.core=nRF5
-bluemicro52840.build.variant=bluemicro_nrf52840
-bluemicro52840.build.usb_manufacturer="bluemicro.jpconstantineau.com"
-bluemicro52840.build.usb_product="BlueMicro"
-bluemicro52840.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
-bluemicro52840.build.ldscript=nrf52840_s140_v6.ld
-bluemicro52840.build.vid=0x1D50
-bluemicro52840.build.pid=0x6161
+bluemicro_nrf52840.build.mcu=cortex-m4
+bluemicro_nrf52840.build.f_cpu=64000000
+bluemicro_nrf52840.build.board=BLUEMICRO_NRF52840
+bluemicro_nrf52840.build.core=nRF5
+bluemicro_nrf52840.build.variant=bluemicro_nrf52840
+bluemicro_nrf52840.build.usb_manufacturer="bluemicro.jpconstantineau.com"
+bluemicro_nrf52840.build.usb_product="BlueMicro"
+bluemicro_nrf52840.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
+bluemicro_nrf52840.build.ldscript=nrf52840_s140_v6.ld
+bluemicro_nrf52840.build.vid=0x1D50
+bluemicro_nrf52840.build.pid=0x6161
 
 # SofDevice Menu
-bluemicro52840.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
-bluemicro52840.menu.softdevice.s140v6.build.sd_name=s140
-bluemicro52840.menu.softdevice.s140v6.build.sd_version=6.1.1
-bluemicro52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
+bluemicro_nrf52840.menu.softdevice.s140v6=SoftDevice s140 6.1.1
+bluemicro_nrf52840.menu.softdevice.s140v6.build.sd_name=s140
+bluemicro_nrf52840.menu.softdevice.s140v6.build.bl_version=20.11.10
+bluemicro_nrf52840.menu.softdevice.s140v6.build.sd_version=6.1.1
+bluemicro_nrf52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
 # Debug Menu
-bluemicro52840.menu.debug.l0=Level 0 (Release)
-bluemicro52840.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
-bluemicro52840.menu.debug.l1=Level 1 (Error Message)
-bluemicro52840.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
-bluemicro52840.menu.debug.l2=Level 2 (Full Debug)
-bluemicro52840.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
-bluemicro52840.menu.debug.l3=Level 3 (Segger SystemView)
-bluemicro52840.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
-bluemicro52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
+bluemicro_nrf52840.menu.debug.l0=Level 0 (Release)
+bluemicro_nrf52840.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+bluemicro_nrf52840.menu.debug.l1=Level 1 (Error Message)
+bluemicro_nrf52840.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+bluemicro_nrf52840.menu.debug.l2=Level 2 (Full Debug)
+bluemicro_nrf52840.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+bluemicro_nrf52840.menu.debug.l3=Level 3 (Segger SystemView)
+bluemicro_nrf52840.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+bluemicro_nrf52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 
 
 # ----------------------------------
 # BlueMacro nRF52840
 # ----------------------------------
 
-bluemacro52840.name=BlueMacro nRF52840
+bluemacro_nrf52840.name=BlueMacro nRF52840
 
 # VID/PID for bootloader with/without UF2, Arduino
-bluemacro52840.vid.0=0x1D50
-bluemacro52840.pid.0=0x6160
-bluemacro52840.vid.1=0x1D50
-bluemacro52840.pid.1=0x6161 
+bluemacro_nrf52840.vid.0=0x1D50
+bluemacro_nrf52840.pid.0=0x6160
+bluemacro_nrf52840.vid.1=0x1D50
+bluemacro_nrf52840.pid.1=0x6161 
 
 # Upload
-bluemacro52840.bootloader.tool=bootburn
-bluemacro52840.upload.tool=nrfutil
-bluemacro52840.upload.protocol=nrfutil
-bluemacro52840.upload.use_1200bps_touch=true
-bluemacro52840.upload.wait_for_upload_port=true
-bluemacro52840.upload.maximum_size=815104
-bluemacro52840.upload.maximum_data_size=237568
+bluemacro_nrf52840.bootloader.tool=bootburn
+bluemacro_nrf52840.upload.tool=nrfutil
+bluemacro_nrf52840.upload.protocol=nrfutil
+bluemacro_nrf52840.upload.use_1200bps_touch=true
+bluemacro_nrf52840.upload.wait_for_upload_port=true
+bluemacro_nrf52840.upload.maximum_size=815104
+bluemacro_nrf52840.upload.maximum_data_size=237568
 
 # Build
-bluemacro52840.build.mcu=cortex-m4
-bluemacro52840.build.f_cpu=64000000
-bluemacro52840.build.board=BLUEMACRO_NRF52840
-bluemacro52840.build.core=nRF5
-bluemacro52840.build.variant=bluemicro_nrf52840
-bluemacro52840.build.usb_manufacturer="bluemicro.jpconstantineau.com"
-bluemacro52840.build.usb_product="BlueMacro"
-bluemacro52840.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
-bluemacro52840.build.ldscript=nrf52840_s140_v6.ld
-bluemacro52840.build.vid=0x1D50
-bluemacro52840.build.pid=0x6161
+bluemacro_nrf52840.build.mcu=cortex-m4
+bluemacro_nrf52840.build.f_cpu=64000000
+bluemacro_nrf52840.build.board=BLUEMACRO_NRF52840
+bluemacro_nrf52840.build.core=nRF5
+bluemacro_nrf52840.build.variant=bluemicro_nrf52840
+bluemacro_nrf52840.build.usb_manufacturer="bluemicro.jpconstantineau.com"
+bluemacro_nrf52840.build.usb_product="BlueMacro"
+bluemacro_nrf52840.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
+bluemacro_nrf52840.build.ldscript=nrf52840_s140_v6.ld
+bluemacro_nrf52840.build.vid=0x1D50
+bluemacro_nrf52840.build.pid=0x6161
 
 # SofDevice Menu
-bluemacro52840.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
-bluemacro52840.menu.softdevice.s140v6.build.sd_name=s140
-bluemacro52840.menu.softdevice.s140v6.build.sd_version=6.1.1
-bluemacro52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
+bluemacro_nrf52840.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
+bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_name=s140
+bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_version=6.1.1
+bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
 # Debug Menu
-bluemacro52840.menu.debug.l0=Level 0 (Release)
-bluemacro52840.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
-bluemacro52840.menu.debug.l1=Level 1 (Error Message)
-bluemacro52840.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
-bluemacro52840.menu.debug.l2=Level 2 (Full Debug)
-bluemacro52840.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
-bluemacro52840.menu.debug.l3=Level 3 (Segger SystemView)
-bluemacro52840.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
-bluemacro52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
+bluemacro_nrf52840.menu.debug.l0=Level 0 (Release)
+bluemacro_nrf52840.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+bluemacro_nrf52840.menu.debug.l1=Level 1 (Error Message)
+bluemacro_nrf52840.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+bluemacro_nrf52840.menu.debug.l2=Level 2 (Full Debug)
+bluemacro_nrf52840.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+bluemacro_nrf52840.menu.debug.l3=Level 3 (Segger SystemView)
+bluemacro_nrf52840.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+bluemacro_nrf52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 
 
 # -------------------------------------------------------
@@ -258,7 +261,54 @@ bluemacro52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 #
 # -------------------------------------------------------
 
+# ----------------------------------
+# Nice Nano - 
+# see https://docs.nicekeyboards.com/#/nice!nano/pinout_schematic
+# ----------------------------------
 
+nice_nano.name=Nice Keyboard's nice!nano
+nice_nano.bootloader.tool=bootburn
+
+# Upload
+nice_nano.upload.tool=nrfutil
+nice_nano.upload.protocol=nrfutil
+nice_nano.upload.use_1200bps_touch=true
+nice_nano.upload.wait_for_upload_port=true
+nice_nano.upload.maximum_size=815104
+nice_nano.upload.maximum_data_size=237568
+
+# Build
+nice_nano.build.mcu=cortex-m4
+nice_nano.build.f_cpu=64000000
+nice_nano.build.board=NICE_NANO
+nice_nano.build.core=nRF5
+nice_nano.build.variant=nice_nano
+nice_nano.build.usb_manufacturer="Nice Keyboards"
+nice_nano.build.usb_product="nice!nano"
+nice_nano.build.extra_flags=-DNRF52840_XXAA {build.flags.usb}
+nice_nano.build.ldscript=nrf52840_s140_v6.ld
+nice_nano.build.vid=0x239A
+nice_nano.build.pid=0x00B3
+
+# SofDevice Menu
+nice_nano.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
+nice_nano.menu.softdevice.s140v6.build.sd_name=s140
+nice_nano.menu.softdevice.s140v6.build.bl_version=0.3.2
+nice_nano.menu.softdevice.s140v6.build.sd_version=6.1.1
+nice_nano.menu.softdevice.s140v6.build.sd_fwid=0x00B6
+
+# Debug Menu
+nice_nano.menu.debug.l0=Level 0 (Release)
+nice_nano.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+nice_nano.menu.debug.l1=Level 1 (Error Message)
+nice_nano.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+nice_nano.menu.debug.l2=Level 2 (Full Debug)
+nice_nano.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+nice_nano.menu.debug.l3=Level 3 (Segger SystemView)
+nice_nano.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+nice_nano.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
+
+=======
 
 # -------------------------------------------------------
 # 
@@ -266,6 +316,9 @@ bluemacro52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 #
 # -------------------------------------------------------
 
+# ----------------------------------
+# Nordic nRF52832DK (PCA10040)
+# ----------------------------------
 
 # ----------------------------------
 # Nordic nRF52840DK (PCA10056)
@@ -297,6 +350,7 @@ pca10056.build.pid=0x8029
 # SofDevice Menu
 pca10056.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
 pca10056.menu.softdevice.s140v6.build.sd_name=s140
+pca10056.menu.softdevice.s140v6.build.bl_version=0.3.2
 pca10056.menu.softdevice.s140v6.build.sd_version=6.1.1
 pca10056.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
@@ -342,6 +396,7 @@ pca10059.build.pid=0x8029
 # SofDevice Menu
 pca10059.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
 pca10059.menu.softdevice.s140v6.build.sd_name=s140
+pca10059.menu.softdevice.s140v6.build.bl_version=0.3.2
 pca10059.menu.softdevice.s140v6.build.sd_version=6.1.1
 pca10059.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
@@ -355,8 +410,6 @@ pca10059.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
 pca10059.menu.debug.l3=Level 3 (Segger SystemView)
 pca10059.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
 pca10059.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
-
-
 
 =======
 
