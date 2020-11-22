@@ -232,6 +232,7 @@ bluemacro_nrf52840.build.pid=0x6161
 # SofDevice Menu
 bluemacro_nrf52840.menu.softdevice.s140v6=0.3.2 SoftDevice s140 6.1.1
 bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_name=s140
+bluemacro_nrf52840.menu.softdevice.s140v6.build.bl_version=20.11.10
 bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_version=6.1.1
 bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
