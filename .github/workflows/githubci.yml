@@ -27,9 +27,9 @@ jobs:
         git submodule sync --recursive
         git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive      
         
-      - name: Setup Arduino CLI
-        uses: arduino/setup-arduino-cli@v1.1.1
-        
+    - name: Setup Arduino CLI
+      uses: arduino/setup-arduino-cli@v1.1.1
+
     - name: Install BSP and Libraries
       env:
         BSP_URL: https://github.com/jpconstantineau/Community_nRF52_Arduino/releases/latest/download/package_jpconstantineau_boards_index.json
