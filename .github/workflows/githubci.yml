@@ -27,16 +27,8 @@ jobs:
         git submodule sync --recursive
         git -c "http.extraheader=$auth_header" -c protocol.version=2 submodule update --init --force --recursive      
         
-    - name: Install Arduino CLI and Tools
-      run: |
-        pip3 install adafruit-nrfutil
-        # make all our directories we need for files and libraries
-        mkdir $HOME/.arduino15
-        mkdir $HOME/.arduino15/packages
-        mkdir $HOME/Arduino
-        mkdir $HOME/Arduino/libraries
-        curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
-        echo /bin >> $GITHUB_PATH
+      - name: Setup Arduino CLI
+        uses: arduino/setup-arduino-cli@v1.1.1
         
     - name: Install BSP and Libraries
       env:
