@@ -20,13 +20,13 @@ nrfjprog.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.
 #**********************************************
 # Jlink with nrfjprog
 #**********************************************
-nrfjprog_unlock.name=J-Link - Unlock+Erase 
+nrfjprog_unlock.name=J-Link - Unlock Only 
 nrfjprog_unlock.program.tool=bootburn
 nrfjprog_unlock.program.cmd=nrfjprog
 nrfjprog_unlock.program.cmd.windows=nrfjprog.exe
 
 # Burn bootloader pattern
-nrfjprog_unlock.program.burn_pattern="{program.cmd}" --recover --eraseall -f nrf52
+nrfjprog_unlock.program.burn_pattern="{program.cmd}" --recover -f nrf52
 
 # Jlink to upload sketch
 nrfjprog_unlock.program.params.quiet=
