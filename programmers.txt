@@ -20,18 +20,18 @@ nrfjprog.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.
 #**********************************************
 # Jlink with nrfjprog
 #**********************************************
-nrfjprog.name=J-Link - Unlock+Erase 
-nrfjprog.program.tool=bootburn
-nrfjprog.program.cmd=nrfjprog
-nrfjprog.program.cmd.windows=nrfjprog.exe
+nrfjprog_unlock.name=J-Link - Unlock+Erase 
+nrfjprog_unlock.program.tool=bootburn
+nrfjprog_unlock.program.cmd=nrfjprog
+nrfjprog_unlock.program.cmd.windows=nrfjprog.exe
 
 # Burn bootloader pattern
-nrfjprog.program.burn_pattern="{program.cmd}" --recover --eraseall --program "{bootloader.file}.hex" -f nrf52 --chiperase --reset
+nrfjprog_unlock.program.burn_pattern="{program.cmd}" --recover --eraseall -f nrf52 && "{program.cmd}" --program "{bootloader.file}.hex" -f nrf52 --chiperase --reset
 
 # Jlink to upload sketch
-nrfjprog.program.params.quiet=
-nrfjprog.program.params.verbose=
-nrfjprog.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.project_name}.hex" --sectorerase -f nrf52
+nrfjprog_unlock.program.params.quiet=
+nrfjprog_unlock.program.params.verbose=
+nrfjprog_unlock.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.project_name}.hex" --sectorerase -f nrf52
 
 # nrfjprog --erasepage {upload.BOOT_SETTING_ADDR} -f nrf52 && nrfjprog --memwr {upload.BOOT_SETTING_ADDR} --val 0x00000001 -f nrf52 && nrfjprog --reset -f nrf52
 # tools.nrfutil.upload.BOOT_SETTING_ADDR=0xFF000
