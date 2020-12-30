@@ -18,6 +18,25 @@ nrfjprog.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.
 # tools.nrfutil.upload.BOOT_SETTING_ADDR=0xFF000
 
 #**********************************************
+# Jlink with nrfjprog
+#**********************************************
+nrfjprog.name=J-Link - Unlock+Erase 
+nrfjprog.program.tool=bootburn
+nrfjprog.program.cmd=nrfjprog
+nrfjprog.program.cmd.windows=nrfjprog.exe
+
+# Burn bootloader pattern
+nrfjprog.program.burn_pattern="{program.cmd}" --recover --eraseall --program "{bootloader.file}.hex" -f nrf52 --chiperase --reset
+
+# Jlink to upload sketch
+nrfjprog.program.params.quiet=
+nrfjprog.program.params.verbose=
+nrfjprog.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.project_name}.hex" --sectorerase -f nrf52
+
+# nrfjprog --erasepage {upload.BOOT_SETTING_ADDR} -f nrf52 && nrfjprog --memwr {upload.BOOT_SETTING_ADDR} --val 0x00000001 -f nrf52 && nrfjprog --reset -f nrf52
+# tools.nrfutil.upload.BOOT_SETTING_ADDR=0xFF000
+
+#**********************************************
 # adafruit-nrfutil
 #**********************************************
 nrfutil_boot.name=Bootloader DFU for Bluefruit nRF52
