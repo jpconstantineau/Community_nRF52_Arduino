@@ -55,9 +55,10 @@ feather52832.build.ldscript=nrf52832_s132_v6.ld
 # SofDevice Menu
 feather52832.menu.softdevice.s132v6=0.3.2 SoftDevice s132 6.1.1
 feather52832.menu.softdevice.s132v6.build.sd_name=s132
-feather52832.menu.softdevice.s140v6.build.bl_version=0.3.2
+feather52832.menu.softdevice.s132v6.build.bl_version=0.3.2
 feather52832.menu.softdevice.s132v6.build.sd_version=6.1.1
 feather52832.menu.softdevice.s132v6.build.sd_fwid=0x00B7
+
 
 # Debug Menu
 feather52832.menu.debug.l0=Level 0 (Release)
@@ -140,7 +141,47 @@ feather52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 # ----------------------------------
 # BlueMicro V2.1 nRF52832
 # ----------------------------------
+bluemicro2_1.name=BlueMicro 2.1 nRF52832
+bluemicro2_1.bootloader.tool=bootburn
 
+# Upload
+bluemicro2_1.upload.tool=nrfutil
+bluemicro2_1.upload.protocol=nrfutil
+bluemicro2_1.upload.use_1200bps_touch=false
+bluemicro2_1.upload.wait_for_upload_port=false
+bluemicro2_1.upload.native_usb=false
+bluemicro2_1.upload.maximum_size=290816
+bluemicro2_1.upload.maximum_data_size=52224
+
+# Build
+bluemicro2_1.build.mcu=cortex-m4
+bluemicro2_1.build.f_cpu=64000000
+bluemicro2_1.build.board=NRF52832_BLUEMICRO2_1
+bluemicro2_1.build.core=nRF5
+bluemicro2_1.build.variant=bluemicro2_1
+bluemicro2_1.build.usb_manufacturer="BlueMicro"
+bluemicro2_1.build.usb_product="BlueMicro nRF52832"
+bluemicro2_1.build.extra_flags=-DNRF52832_XXAA -DNRF52
+bluemicro2_1.build.ldscript=nrf52832_s132_v6.ld
+
+# SofDevice Menu
+bluemicro2_1.menu.softdevice.s132v6=0.3.2 SoftDevice s132 6.1.1
+bluemicro2_1.menu.softdevice.s132v6.build.sd_name=s132
+bluemicro2_1.menu.softdevice.s132v6.build.bl_version=0.3.2
+bluemicro2_1.menu.softdevice.s132v6.build.sd_version=6.1.1
+bluemicro2_1.menu.softdevice.s132v6.build.sd_fwid=0x00B7
+
+
+# Debug Menu
+bluemicro2_1.menu.debug.l0=Level 0 (Release)
+bluemicro2_1.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+bluemicro2_1.menu.debug.l1=Level 1 (Error Message)
+bluemicro2_1.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+bluemicro2_1.menu.debug.l2=Level 2 (Full Debug)
+bluemicro2_1.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+bluemicro2_1.menu.debug.l3=Level 3 (Segger SystemView)
+bluemicro2_1.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+bluemicro2_1.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 
 # ----------------------------------
 # BlueMicro840 nRF52840
