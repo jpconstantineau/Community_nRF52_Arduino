@@ -135,6 +135,52 @@ feather52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 # -------------------------------------------------------
 
 # ----------------------------------
+# 4x4 macropad nRF52832
+# ----------------------------------
+
+4x4macropad_nrf52832.name=4x4 Macropad (nRF52832)
+4x4macropad_nrf52832.bootloader.tool=bootburn
+
+# Upload
+4x4macropad_nrf52832.upload.tool=nrfutil
+4x4macropad_nrf52832.upload.protocol=nrfutil
+4x4macropad_nrf52832.upload.use_1200bps_touch=false
+4x4macropad_nrf52832.upload.wait_for_upload_port=false
+4x4macropad_nrf52832.upload.native_usb=false
+4x4macropad_nrf52832.upload.maximum_size=290816
+4x4macropad_nrf52832.upload.maximum_data_size=52224
+
+# Build
+4x4macropad_nrf52832.build.mcu=cortex-m4
+4x4macropad_nrf52832.build.f_cpu=64000000
+4x4macropad_nrf52832.build.board=4X4MACROPAD_NRF52832
+4x4macropad_nrf52832.build.core=nRF5
+4x4macropad_nrf52832.build.variant=4x4macropad_nrf52832
+4x4macropad_nrf52832.build.usb_manufacturer="BlueMicro"
+4x4macropad_nrf52832.build.usb_product="4x4 Macropad nRF52832"
+4x4macropad_nrf52832.build.extra_flags=-DNRF52832_XXAA -DNRF52
+4x4macropad_nrf52832.build.ldscript=nrf52832_s132_v6.ld
+
+# SofDevice Menu
+4x4macropad_nrf52832.menu.softdevice.s132v6=0.3.2 SoftDevice s132 6.1.1
+4x4macropad_nrf52832.menu.softdevice.s132v6.build.sd_name=s132
+4x4macropad_nrf52832.menu.softdevice.s132v6.build.bl_version=0.3.2
+4x4macropad_nrf52832.menu.softdevice.s132v6.build.sd_version=6.1.1
+4x4macropad_nrf52832.menu.softdevice.s132v6.build.sd_fwid=0x00B7
+
+
+# Debug Menu
+4x4macropad_nrf52832.menu.debug.l0=Level 0 (Release)
+4x4macropad_nrf52832.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+4x4macropad_nrf52832.menu.debug.l1=Level 1 (Error Message)
+4x4macropad_nrf52832.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+4x4macropad_nrf52832.menu.debug.l2=Level 2 (Full Debug)
+4x4macropad_nrf52832.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+4x4macropad_nrf52832.menu.debug.l3=Level 3 (Segger SystemView)
+4x4macropad_nrf52832.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+4x4macropad_nrf52832.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
+
+# ----------------------------------
 # BlueMicro V2.0c nRF52832
 # ----------------------------------
 
