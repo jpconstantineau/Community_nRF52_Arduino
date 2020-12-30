@@ -26,7 +26,7 @@ nrfjprog_unlock.program.cmd=nrfjprog
 nrfjprog_unlock.program.cmd.windows=nrfjprog.exe
 
 # Burn bootloader pattern
-nrfjprog_unlock.program.burn_pattern="{program.cmd}" --recover --eraseall -f nrf52 && "{program.cmd}" --program "{bootloader.file}.hex" -f nrf52 --chiperase --reset
+nrfjprog_unlock.program.burn_pattern="{program.cmd}" --recover --eraseall -f nrf52
 
 # Jlink to upload sketch
 nrfjprog_unlock.program.params.quiet=
