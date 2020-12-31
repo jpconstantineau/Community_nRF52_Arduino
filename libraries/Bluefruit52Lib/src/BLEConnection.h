@@ -81,6 +81,7 @@ class BLEConnection
     uint16_t getConnectionInterval(void);
     uint16_t getDataLength(void);
     uint8_t  getPHY(void);
+    uint16_t getEdiv(void);
 
     ble_gap_addr_t getPeerAddr(void);
     uint16_t getPeerName(char* buf, uint16_t bufsize);
