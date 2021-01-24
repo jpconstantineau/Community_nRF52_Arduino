@@ -8,4 +8,4 @@ jobs:
       - uses: arduino/arduino-lint-action@v1
         with: 
           verbose: true
-          compliance: permissive
+          compliance: specification
