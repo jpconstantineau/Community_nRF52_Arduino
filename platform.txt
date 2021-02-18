@@ -18,7 +18,7 @@
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 name=Community nRF52 Add-On Boards 
-version=0.1.14
+version=0.1.18
 
 # Compile variables
 # -----------------
