@@ -54,9 +54,9 @@ feather52832.build.extra_flags=-DNRF52832_XXAA -DNRF52
 feather52832.build.ldscript=nrf52832_s132_v6.ld
 
 # SofDevice Menu
-feather52832.menu.softdevice.s132v6=0.4.0 SoftDevice s132 6.1.1
+feather52832.menu.softdevice.s132v6=0.4.1 SoftDevice s132 6.1.1
 feather52832.menu.softdevice.s132v6.build.sd_name=s132
-feather52832.menu.softdevice.s132v6.build.bl_version=0.4.0
+feather52832.menu.softdevice.s132v6.build.bl_version=0.4.1
 feather52832.menu.softdevice.s132v6.build.sd_version=6.1.1
 feather52832.menu.softdevice.s132v6.build.sd_fwid=0x00B7
 
@@ -110,9 +110,9 @@ feather52840.build.vid=0x239A
 feather52840.build.pid=0x8029
 
 # SofDevice Menu
-feather52840.menu.softdevice.s140v6=0.4.0 SoftDevice s140 6.1.1
+feather52840.menu.softdevice.s140v6=0.4.1 SoftDevice s140 6.1.1
 feather52840.menu.softdevice.s140v6.build.sd_name=s140
-feather52840.menu.softdevice.s140v6.build.bl_version=0.4.0
+feather52840.menu.softdevice.s140v6.build.bl_version=0.4.1
 feather52840.menu.softdevice.s140v6.build.sd_version=6.1.1
 feather52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
@@ -163,9 +163,9 @@ feather52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 4x4macropad_nrf52832.build.ldscript=nrf52832_s132_v6.ld
 
 # SofDevice Menu
-4x4macropad_nrf52832.menu.softdevice.s132v6=0.4.0 SoftDevice s132 6.1.1
+4x4macropad_nrf52832.menu.softdevice.s132v6=0.4.1 SoftDevice s132 6.1.1
 4x4macropad_nrf52832.menu.softdevice.s132v6.build.sd_name=s132
-4x4macropad_nrf52832.menu.softdevice.s132v6.build.bl_version=0.4.0
+4x4macropad_nrf52832.menu.softdevice.s132v6.build.bl_version=0.4.1
 4x4macropad_nrf52832.menu.softdevice.s132v6.build.sd_version=6.1.1
 4x4macropad_nrf52832.menu.softdevice.s132v6.build.sd_fwid=0x00B7
 
@@ -212,9 +212,9 @@ bluemicro2_1.build.extra_flags=-DNRF52832_XXAA -DNRF52
 bluemicro2_1.build.ldscript=nrf52832_s132_v6.ld
 
 # SofDevice Menu
-bluemicro2_1.menu.softdevice.s132v6=0.4.0 SoftDevice s132 6.1.1
+bluemicro2_1.menu.softdevice.s132v6=0.4.1 SoftDevice s132 6.1.1
 bluemicro2_1.menu.softdevice.s132v6.build.sd_name=s132
-bluemicro2_1.menu.softdevice.s132v6.build.bl_version=0.4.0
+bluemicro2_1.menu.softdevice.s132v6.build.bl_version=0.4.1
 bluemicro2_1.menu.softdevice.s132v6.build.sd_version=6.1.1
 bluemicro2_1.menu.softdevice.s132v6.build.sd_fwid=0x00B7
 
@@ -265,9 +265,9 @@ bluemicro_nrf52840.build.vid=0x1D50
 bluemicro_nrf52840.build.pid=0x6161
 
 # SofDevice Menu
-bluemicro_nrf52840.menu.softdevice.s140v6=SoftDevice 0.4.0 s140 6.1.1
+bluemicro_nrf52840.menu.softdevice.s140v6=SoftDevice 0.4.1 s140 6.1.1
 bluemicro_nrf52840.menu.softdevice.s140v6.build.sd_name=s140
-bluemicro_nrf52840.menu.softdevice.s140v6.build.bl_version=0.4.0
+bluemicro_nrf52840.menu.softdevice.s140v6.build.bl_version=0.4.1
 bluemicro_nrf52840.menu.softdevice.s140v6.build.sd_version=6.1.1
 bluemicro_nrf52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
@@ -318,9 +318,9 @@ bluemacro_nrf52840.build.vid=0x1D50
 bluemacro_nrf52840.build.pid=0x6161
 
 # SofDevice Menu
-bluemacro_nrf52840.menu.softdevice.s140v6=0.4.0 SoftDevice s140 6.1.1
+bluemacro_nrf52840.menu.softdevice.s140v6=0.4.1 SoftDevice s140 6.1.1
 bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_name=s140
-bluemacro_nrf52840.menu.softdevice.s140v6.build.bl_version=0.4.0
+bluemacro_nrf52840.menu.softdevice.s140v6.build.bl_version=0.4.1
 bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_version=6.1.1
 bluemacro_nrf52840.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
@@ -380,9 +380,9 @@ nice_nano.build.vid=0x239A
 nice_nano.build.pid=0x00B3
 
 # SofDevice Menu
-nice_nano.menu.softdevice.s140v6=0.4.0 SoftDevice s140 6.1.1
+nice_nano.menu.softdevice.s140v6=0.4.1 SoftDevice s140 6.1.1
 nice_nano.menu.softdevice.s140v6.build.sd_name=s140
-nice_nano.menu.softdevice.s140v6.build.bl_version=0.4.0
+nice_nano.menu.softdevice.s140v6.build.bl_version=0.4.1
 nice_nano.menu.softdevice.s140v6.build.sd_version=6.1.1
 nice_nano.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
@@ -436,9 +436,9 @@ pca10056.build.vid=0x239A
 pca10056.build.pid=0x8029
 
 # SofDevice Menu
-pca10056.menu.softdevice.s140v6=0.4.0 SoftDevice s140 6.1.1
+pca10056.menu.softdevice.s140v6=0.4.1 SoftDevice s140 6.1.1
 pca10056.menu.softdevice.s140v6.build.sd_name=s140
-pca10056.menu.softdevice.s140v6.build.bl_version=0.4.0
+pca10056.menu.softdevice.s140v6.build.bl_version=0.4.1
 pca10056.menu.softdevice.s140v6.build.sd_version=6.1.1
 pca10056.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
@@ -482,9 +482,9 @@ pca10059.build.vid=0x239A
 pca10059.build.pid=0x8029
 
 # SofDevice Menu
-pca10059.menu.softdevice.s140v6=0.4.0 SoftDevice s140 6.1.1
+pca10059.menu.softdevice.s140v6=0.4.1 SoftDevice s140 6.1.1
 pca10059.menu.softdevice.s140v6.build.sd_name=s140
-pca10059.menu.softdevice.s140v6.build.bl_version=0.4.0
+pca10059.menu.softdevice.s140v6.build.bl_version=0.4.1
 pca10059.menu.softdevice.s140v6.build.sd_version=6.1.1
 pca10059.menu.softdevice.s140v6.build.sd_fwid=0x00B6
 
