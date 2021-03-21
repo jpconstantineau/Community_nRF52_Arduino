@@ -100,31 +100,31 @@ static const uint8_t AREF = PIN_AREF;
  */
 
 // Arduino Header D0, D1
-//#define PIN_SERIAL1_RX      (33) // P1.01
-//#define PIN_SERIAL1_TX      (34) // P1.02
+#define PIN_SERIAL1_RX      (8) // P0.08
+#define PIN_SERIAL1_TX      (6) // P0.06
 
 
 /*
  * SPI Interfaces
  */
-//#define SPI_INTERFACES_COUNT 1
+#define SPI_INTERFACES_COUNT 1
 
-///#define PIN_SPI_MISO         (46)
-//#define PIN_SPI_MOSI         (45)
-//#define PIN_SPI_SCK          (47)
+#define PIN_SPI_MISO         (43)  // P1.11
+#define PIN_SPI_MOSI         (10)  // P0.10
+#define PIN_SPI_SCK          (45)  // P1.13
 
-///static const uint8_t SS   = 44 ;
-//static const uint8_t MOSI = PIN_SPI_MOSI ;
-//static const uint8_t MISO = PIN_SPI_MISO ;
-//static const uint8_t SCK  = PIN_SPI_SCK ;
+static const uint8_t SS   = (9) ;  // 0.09
+static const uint8_t MOSI = PIN_SPI_MOSI ;
+static const uint8_t MISO = PIN_SPI_MISO ;
+static const uint8_t SCK  = PIN_SPI_SCK ;
 
 /*
  * Wire Interfaces
  */
-//#define WIRE_INTERFACES_COUNT 1
+#define WIRE_INTERFACES_COUNT 1
 
-//#define PIN_WIRE_SDA         (26)
-//#define PIN_WIRE_SCL         (27)
+#define PIN_WIRE_SDA         (17)  // 0.17
+#define PIN_WIRE_SCL         (20)  // 0.20
 
 
 
