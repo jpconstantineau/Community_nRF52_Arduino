@@ -335,6 +335,105 @@ bluemacro_nrf52840.menu.debug.l3=Level 3 (Segger SystemView)
 bluemacro_nrf52840.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
 bluemacro_nrf52840.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
 
+# -------------------------------------------------------
+# 
+# EBYTE TEST BOARDS
+#
+# -------------------------------------------------------
+
+# ----------------------------------
+# EByte E104 BT5032A Module and
+#       Test Board (nRF52832)
+# ----------------------------------
+
+ebyte_e104_bt5032a.name=EByte E104 BT5032A Module and Test Board (nRF52832)
+ebyte_e104_bt5032a.bootloader.tool=bootburn
+
+# Upload
+ebyte_e104_bt5032a.upload.tool=nrfutil
+ebyte_e104_bt5032a.upload.protocol=nrfutil
+ebyte_e104_bt5032a.upload.use_1200bps_touch=false
+ebyte_e104_bt5032a.upload.wait_for_upload_port=false
+ebyte_e104_bt5032a.upload.native_usb=false
+ebyte_e104_bt5032a.upload.maximum_size=290816
+ebyte_e104_bt5032a.upload.maximum_data_size=52224
+
+# Build
+ebyte_e104_bt5032a.build.mcu=cortex-m4
+ebyte_e104_bt5032a.build.f_cpu=64000000
+ebyte_e104_bt5032a.build.board=EBYTE_E104_BT5032A
+ebyte_e104_bt5032a.build.core=nRF5
+ebyte_e104_bt5032a.build.variant=ebyte_e104_bt5032a
+ebyte_e104_bt5032a.build.usb_manufacturer="EByte"
+ebyte_e104_bt5032a.build.usb_product="EByte E104 nRF52832"
+ebyte_e104_bt5032a.build.extra_flags=-DNRF52832_XXAA -DNRF52
+ebyte_e104_bt5032a.build.ldscript=nrf52832_s132_v6.ld
+
+# SofDevice Menu
+ebyte_e104_bt5032a.menu.softdevice.s132v6=0.4.1 SoftDevice s132 6.1.1
+ebyte_e104_bt5032a.menu.softdevice.s132v6.build.sd_name=s132
+ebyte_e104_bt5032a.menu.softdevice.s132v6.build.bl_version=21.5.29
+ebyte_e104_bt5032a.menu.softdevice.s132v6.build.sd_version=6.1.1
+ebyte_e104_bt5032a.menu.softdevice.s132v6.build.sd_fwid=0x00B7
+
+
+# Debug Menu
+ebyte_e104_bt5032a.menu.debug.l0=Level 0 (Release)
+ebyte_e104_bt5032a.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+ebyte_e104_bt5032a.menu.debug.l1=Level 1 (Error Message)
+ebyte_e104_bt5032a.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+ebyte_e104_bt5032a.menu.debug.l2=Level 2 (Full Debug)
+ebyte_e104_bt5032a.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+ebyte_e104_bt5032a.menu.debug.l3=Level 3 (Segger SystemView)
+ebyte_e104_bt5032a.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+ebyte_e104_bt5032a.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
+
+# ----------------------------------
+# EByte E73 TBB Test Board (nRF52832)    
+# ----------------------------------
+
+ebyte_e73_tbb.name=EByte E73 TBB Test Board (nRF52832)
+ebyte_e73_tbb.bootloader.tool=bootburn
+
+# Upload
+ebyte_e73_tbb.upload.tool=nrfutil
+ebyte_e73_tbb.upload.protocol=nrfutil
+ebyte_e73_tbb.upload.use_1200bps_touch=false
+ebyte_e73_tbb.upload.wait_for_upload_port=false
+ebyte_e73_tbb.upload.native_usb=false
+ebyte_e73_tbb.upload.maximum_size=290816
+ebyte_e73_tbb.upload.maximum_data_size=52224
+
+# Build
+ebyte_e73_tbb.build.mcu=cortex-m4
+ebyte_e73_tbb.build.f_cpu=64000000
+ebyte_e73_tbb.build.board=EBYTE_E73_TBB
+ebyte_e73_tbb.build.core=nRF5
+ebyte_e73_tbb.build.variant=ebyte_e73_tbb
+ebyte_e73_tbb.build.usb_manufacturer="EByte"
+ebyte_e73_tbb.build.usb_product="EByte E73 TBB nRF52832"
+ebyte_e73_tbb.build.extra_flags=-DNRF52832_XXAA -DNRF52
+ebyte_e73_tbb.build.ldscript=nrf52832_s132_v6.ld
+
+# SofDevice Menu
+ebyte_e73_tbb.menu.softdevice.s132v6=0.4.1 SoftDevice s132 6.1.1
+ebyte_e73_tbb.menu.softdevice.s132v6.build.sd_name=s132
+ebyte_e73_tbb.menu.softdevice.s132v6.build.bl_version=21.5.30.1
+ebyte_e73_tbb.menu.softdevice.s132v6.build.sd_version=6.1.1
+ebyte_e73_tbb.menu.softdevice.s132v6.build.sd_fwid=0x00B7
+
+
+# Debug Menu
+ebyte_e73_tbb.menu.debug.l0=Level 0 (Release)
+ebyte_e73_tbb.menu.debug.l0.build.debug_flags=-DCFG_DEBUG=0
+ebyte_e73_tbb.menu.debug.l1=Level 1 (Error Message)
+ebyte_e73_tbb.menu.debug.l1.build.debug_flags=-DCFG_DEBUG=1
+ebyte_e73_tbb.menu.debug.l2=Level 2 (Full Debug)
+ebyte_e73_tbb.menu.debug.l2.build.debug_flags=-DCFG_DEBUG=2
+ebyte_e73_tbb.menu.debug.l3=Level 3 (Segger SystemView)
+ebyte_e73_tbb.menu.debug.l3.build.debug_flags=-DCFG_DEBUG=3
+ebyte_e73_tbb.menu.debug.l3.build.sysview_flags=-DCFG_SYSVIEW=1
+
 
 # -------------------------------------------------------
 # 
