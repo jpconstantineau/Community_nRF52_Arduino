@@ -16,8 +16,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _VARIANT_BLUEMICRO_NRF52840_
-#define _VARIANT_BLUEMICRO_NRF52840_
+#ifndef _VARIANT_NICE_NANO_
+#define _VARIANT_NICE_NANO_
 
 /** Master clock frequency */
 #define VARIANT_MCK       (64000000ul)
@@ -39,28 +39,30 @@ extern "C"
 #define _PINNUM(port, pin)     ((port)*32 + (pin))
 
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (48u)
-#define NUM_DIGITAL_PINS     (48u)
+#define PINS_COUNT           (48)
+#define NUM_DIGITAL_PINS     (48)
 #define NUM_ANALOG_INPUTS    (8u)
 #define NUM_ANALOG_OUTPUTS   (0u)
 
+
 // LEDs
-#define PIN_LED1             _PINNUM(1, 4)
-#define PIN_LED2             _PINNUM(1, 10)
+#define PIN_LED1             _PINNUM(0, 15) // Blue
 
-#define LED_BUILTIN          PIN_LED1
-#define LED_CONN             PIN_LED2
 
-#define LED_RED              PIN_LED1
-#define LED_BLUE             PIN_LED2
+#define LED_BUILTIN          PIN_LED1  // added to support examples - just in case...
+#define LED_CONN             PIN_LED1  // added to support examples - just in case...
+
+#define LED_RED              PIN_LED1  // added to support examples - just in case...
+#define LED_BLUE             PIN_LED1
 
 #define LED_STATE_ON         1         // State when LED is litted
 
 /*
  * Buttons
  */
-#define PIN_BUTTON1          _PINNUM(0, 18)
-#define PIN_BUTTON2          _PINNUM(1, 1)
+// no Buttons
+#define BUTTON_1          _PINNUM(0, 18)  // unusable: RESET
+#define BUTTON_2          _PINNUM(0, 19)  // no connection
 
 /*
  * Analog pins
@@ -85,32 +87,33 @@ static const uint8_t A5  = PIN_A5 ;
 static const uint8_t A6  = PIN_A6 ;
 static const uint8_t A7  = PIN_A7 ;
 #define ADC_RESOLUTION    14
-
-// Other pins
 #define PIN_AREF           (2)
+
+static const uint8_t AREF = PIN_AREF;
+
 #define PIN_NFC1           _PINNUM(0, 9)
 #define PIN_NFC2           _PINNUM(0, 10)
 
-static const uint8_t AREF = PIN_AREF;
 
 /*
  * Serial interfaces
  */
 
 // Arduino Header D0, D1
-#define PIN_SERIAL1_RX      _PINNUM(1, 13)
-#define PIN_SERIAL1_TX      _PINNUM(0, 28)
+#define PIN_SERIAL1_RX      (8) // P0.08
+#define PIN_SERIAL1_TX      (6) // P0.06
 
 
 /*
  * SPI Interfaces
  */
 #define SPI_INTERFACES_COUNT 1
-#define PIN_SPI_MISO         _PINNUM(0, 9)
-#define PIN_SPI_MOSI         _PINNUM(1, 11)
-#define PIN_SPI_SCK          _PINNUM(0, 10)
 
-static const uint8_t SS   = _PINNUM(0, 3) ;
+#define PIN_SPI_MISO         (43)  // P1.11
+#define PIN_SPI_MOSI         (10)  // P0.10
+#define PIN_SPI_SCK          (45)  // P1.13
+
+static const uint8_t SS   = (9) ;  // 0.09
 static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
@@ -119,8 +122,11 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
  * Wire Interfaces
  */
 #define WIRE_INTERFACES_COUNT 1
-#define PIN_WIRE_SDA         _PINNUM(0, 15)
-#define PIN_WIRE_SCL         _PINNUM(0, 17)
+
+#define PIN_WIRE_SDA         (17)  // 0.17
+#define PIN_WIRE_SCL         (20)  // 0.20
+
+
 
 
 #ifdef __cplusplus
@@ -131,4 +137,4 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
  *        Arduino objects - C++ only
  *----------------------------------------------------------------------------*/
 
-#endif
+#endif // End of _VARIANT_NICE_NANO_

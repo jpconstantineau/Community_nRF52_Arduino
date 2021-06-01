@@ -111,6 +111,11 @@ uint8_t BLEConnection::getPHY(void)
   return _phy;
 }
 
+uint16_t BLEConnection::getEdiv(void)
+{
+  return _ediv;
+}
+
 ble_gap_addr_t BLEConnection::getPeerAddr (void)
 {
   return _peer_addr;

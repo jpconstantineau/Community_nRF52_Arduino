@@ -18,6 +18,25 @@ nrfjprog.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.
 # tools.nrfutil.upload.BOOT_SETTING_ADDR=0xFF000
 
 #**********************************************
+# Jlink with nrfjprog
+#**********************************************
+nrfjprog_unlock.name=J-Link - Unlock Only 
+nrfjprog_unlock.program.tool=bootburn
+nrfjprog_unlock.program.cmd=nrfjprog
+nrfjprog_unlock.program.cmd.windows=nrfjprog.exe
+
+# Burn bootloader pattern
+nrfjprog_unlock.program.burn_pattern="{program.cmd}" --recover -f nrf52
+
+# Jlink to upload sketch
+nrfjprog_unlock.program.params.quiet=
+nrfjprog_unlock.program.params.verbose=
+nrfjprog_unlock.program.pattern="{program.cmd}" --reset --program "{build.path}/{build.project_name}.hex" --sectorerase -f nrf52
+
+# nrfjprog --erasepage {upload.BOOT_SETTING_ADDR} -f nrf52 && nrfjprog --memwr {upload.BOOT_SETTING_ADDR} --val 0x00000001 -f nrf52 && nrfjprog --reset -f nrf52
+# tools.nrfutil.upload.BOOT_SETTING_ADDR=0xFF000
+
+#**********************************************
 # adafruit-nrfutil
 #**********************************************
 nrfutil_boot.name=Bootloader DFU for Bluefruit nRF52
@@ -38,17 +57,34 @@ nrfutil_boot.program.pattern=echo Please select <J-Link for Bluefruit nRF52> as 
 #**********************************************
 # Black Magic Probe
 #**********************************************
-bmp_boot.name=Black Magic Probe for nRF52 (Testing)
+bmp_boot.name=Black Magic Probe for nRF52
 bmp_boot.program.tool=bootburn
 bmp_boot.program.cmd=arm-none-eabi-gdb
 bmp_boot.program.cmd.windows={runtime.tools.arm-none-eabi-gcc.path}/bin/arm-none-eabi-gdb.exe
 bmp_boot.program.cmd.macosx={runtime.tools.arm-none-eabi-gcc.path}/bin/arm-none-eabi-gdb
 
 # Burn bootloader pattern
-bmp_boot.program.burn_pattern={program.cmd}  "{bootloader.file}.hex" --batch -ex "target extended-remote \\.\{serial.port}" -ex "mon tpwr enable" -ex "mon swdp_scan" -ex "att 1"  -ex "load  " -ex "compare-sections" -ex "mon hard_srst" -ex "detach"
+bmp_boot.program.burn_pattern.windows={program.cmd}  "{bootloader.file}.hex" -quiet --batch -ex "target extended-remote \\.\{serial.port}" -ex "mon tpwr enable" -ex "mon swdp_scan" -ex "att 1"  ex "echo \nFlashing\n" -ex "load  " -ex "echo \nVerifying\n" -ex "compare-sections" -ex "mon hard_srst" -ex "detach" -ex "echo \nBootloader upload complete!\n" -ex "quit"
+bmp_boot.program.burn_pattern.macosx={program.cmd}  "{bootloader.file}.hex" -quiet --batch -ex "target extended-remote {serial.port}" -ex "mon tpwr enable" -ex "mon swdp_scan" -ex "att 1" -ex "echo \nFlashing\n" -ex "load  " -ex "echo \nVerifying\n" -ex "compare-sections" -ex "mon hard_srst" -ex "detach" -ex "echo \nBootloader upload complete!\n" -ex "quit"
 
 
 # Remind user to select Jlink when used to upload sketch
 bmp_boot.program.params.quiet=
 bmp_boot.program.params.verbose=
 bmp_boot.program.pattern=echo Please select <Black Magic Probe for Bluefruit nRF52> as programmer
+
+
+#**********************************************
+# Black Magic Probe
+#**********************************************
+bmp_erase.name=Black Magic Probe - Unlock+Erase Only
+bmp_erase.program.tool=bootburn
+bmp_erase.program.cmd=arm-none-eabi-gdb
+bmp_erase.program.cmd.windows={runtime.tools.arm-none-eabi-gcc.path}/bin/arm-none-eabi-gdb.exe
+bmp_erase.program.cmd.macosx={runtime.tools.arm-none-eabi-gcc.path}/bin/arm-none-eabi-gdb
+
+# Burn bootloader pattern
+bmp_erase.program.burn_pattern.windows={program.cmd}  -quiet --batch -ex "target extended-remote \\.\{serial.port}" -ex "mon tpwr enable" -ex "mon swdp_scan" -ex "att 1" -ex "mon erase_mass" -ex "mon hard_srst" -ex "detach" -ex "echo \nUnlock+Erase complete!\n" -ex "detach" -ex "quit"
+bmp_erase.program.burn_pattern.macosx={program.cmd}   -quiet --batch -ex "target extended-remote {serial.port}" -ex "mon tpwr enable" -ex "mon swdp_scan" -ex "att 1" -ex "mon erase_mass"  -ex "mon hard_srst" -ex "detach" -ex "echo \nUnlock+Erase complete!\n" -ex "detach" -ex "quit"
+
+

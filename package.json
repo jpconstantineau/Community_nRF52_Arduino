@@ -3,5 +3,5 @@
     "name": "framework-arduinocommunityadafruitnrf52",
     "system": "*",
     "url": "https://github.com/jpconstantineau/Community_nRF52_Arduino",
-    "version": "0.1.2"
+    "version": "0.1.18"
   }

@@ -5,3 +5,18 @@
 	path = libraries/Adafruit_TinyUSB_Arduino
 	url = https://github.com/adafruit/Adafruit_TinyUSB_Arduino.git
 
+[submodule "libraries/Adafruit_BusIO"]
+	path = libraries/Adafruit_BusIO
+	url = https://github.com/adafruit/Adafruit_BusIO.git
+[submodule "libraries/Adafruit-GFX-Library"]
+	path = libraries/Adafruit-GFX-Library
+	url = https://github.com/adafruit/Adafruit-GFX-Library.git
+[submodule "libraries/Adafruit_SSD1306"]
+	path = libraries/Adafruit_SSD1306
+	url = https://github.com/adafruit/Adafruit_SSD1306.git
+[submodule "libraries/Adafruit_NeoPixel"]
+	path = libraries/Adafruit_NeoPixel
+	url = https://github.com/adafruit/Adafruit_NeoPixel.git
+[submodule "libraries/U8g2_Arduino"]
+	path = libraries/U8g2_Arduino
+	url = https://github.com/olikraus/U8g2_Arduino.git
