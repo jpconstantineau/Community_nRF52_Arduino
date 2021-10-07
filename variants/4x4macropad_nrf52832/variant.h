@@ -16,8 +16,8 @@
   Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-#ifndef _VARIANT_BLUEMICRO_NRF52840_
-#define _VARIANT_BLUEMICRO_NRF52840_
+#ifndef _VARIANT_4X4MACROPAD_NRF52832_
+#define _VARIANT_4X4MACROPAD_NRF52832_
 
 /** Master clock frequency */
 #define VARIANT_MCK       (64000000ul)
@@ -36,17 +36,15 @@ extern "C"
 {
 #endif // __cplusplus
 
-#define _PINNUM(port, pin)     ((port)*32 + (pin))
-
 // Number of pins defined in PinDescription array
-#define PINS_COUNT           (48u)
-#define NUM_DIGITAL_PINS     (48u)
+#define PINS_COUNT           (32u)
+#define NUM_DIGITAL_PINS     (32u)
 #define NUM_ANALOG_INPUTS    (8u)
 #define NUM_ANALOG_OUTPUTS   (0u)
 
 // LEDs
-#define PIN_LED1             _PINNUM(1, 4)
-#define PIN_LED2             _PINNUM(1, 10)
+#define PIN_LED1             (17)
+#define PIN_LED2             (19)
 
 #define LED_BUILTIN          PIN_LED1
 #define LED_CONN             PIN_LED2
@@ -55,12 +53,6 @@ extern "C"
 #define LED_BLUE             PIN_LED2
 
 #define LED_STATE_ON         1         // State when LED is litted
-
-/*
- * Buttons
- */
-#define PIN_BUTTON1          _PINNUM(0, 18)
-#define PIN_BUTTON2          _PINNUM(1, 1)
 
 /*
  * Analog pins
@@ -74,8 +66,6 @@ extern "C"
 #define PIN_A6               (30)
 #define PIN_A7               (31)
 
-#define PIN_VBAT           PIN_A7
-
 static const uint8_t A0  = PIN_A0 ;
 static const uint8_t A1  = PIN_A1 ;
 static const uint8_t A2  = PIN_A2 ;
@@ -87,30 +77,29 @@ static const uint8_t A7  = PIN_A7 ;
 #define ADC_RESOLUTION    14
 
 // Other pins
-#define PIN_AREF           (2)
-#define PIN_NFC1           _PINNUM(0, 9)
-#define PIN_NFC2           _PINNUM(0, 10)
+#define PIN_AREF           (24)
+#define PIN_VBAT           PIN_A7
+#define PIN_NFC1           (9)
+#define PIN_NFC2           (10)
 
 static const uint8_t AREF = PIN_AREF;
 
 /*
  * Serial interfaces
  */
-
-// Arduino Header D0, D1
-#define PIN_SERIAL1_RX      _PINNUM(1, 13)
-#define PIN_SERIAL1_TX      _PINNUM(0, 28)
-
+#define PIN_SERIAL_RX       (8)
+#define PIN_SERIAL_TX       (6)
 
 /*
  * SPI Interfaces
  */
 #define SPI_INTERFACES_COUNT 1
-#define PIN_SPI_MISO         _PINNUM(0, 9)
-#define PIN_SPI_MOSI         _PINNUM(1, 11)
-#define PIN_SPI_SCK          _PINNUM(0, 10)
 
-static const uint8_t SS   = _PINNUM(0, 3) ;
+#define PIN_SPI_MISO         (14)
+#define PIN_SPI_MOSI         (13)
+#define PIN_SPI_SCK          (12)
+
+static const uint8_t SS   = 27 ;
 static const uint8_t MOSI = PIN_SPI_MOSI ;
 static const uint8_t MISO = PIN_SPI_MISO ;
 static const uint8_t SCK  = PIN_SPI_SCK ;
@@ -119,9 +108,9 @@ static const uint8_t SCK  = PIN_SPI_SCK ;
  * Wire Interfaces
  */
 #define WIRE_INTERFACES_COUNT 1
-#define PIN_WIRE_SDA         _PINNUM(0, 15)
-#define PIN_WIRE_SCL         _PINNUM(0, 17)
 
+#define PIN_WIRE_SDA         (25u)
+#define PIN_WIRE_SCL         (26u)
 
 #ifdef __cplusplus
 }
